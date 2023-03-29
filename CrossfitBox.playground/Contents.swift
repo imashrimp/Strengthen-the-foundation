@@ -1,6 +1,8 @@
 import Foundation
 // 크로스핏 선수 키우기 해보자
-// 내일 할거 Athlete 클래스에 역도 메서드 완성(바벨 데이터 타입 설정 잘 해보기), 유산소 머신 클래스에 zone2 메서드 완성
+// 'athlete' 클래스에서 'snatchPR', 'cleanPR' 프로퍼티의 값을 인스턴스 생성시 남여 선택에 따라 무게를 다르게 설정할 수 있도록 하기
+// => enum barbellOnSex
+// 프로토콜, 익스텐션, 열거형, 클래스, 함수별 작성 이유 및 기능 작성하기
 
 //MARK: - 프로토콜
 
@@ -21,18 +23,26 @@ protocol WeightEqupiment {
 protocol CardioMachine {
     var rpm: Int { get set }
     var damp: Int { get set }
-    var cal: Int { get set }
     var min: Int { get set }
-    var meter: Int { get set }
-    
-    func zone2Training()
+    //    var cal: Int { get set }
+    //    var meter: Int { get set }
+}
+
+extension CardioMachine {
+    func zone2Training() {
+        print("\((String(describing: type(of: self))))의 댐퍼를 \(damp)로 설정해 \(min)분 동안 \(rpm)rpm을 유지해서 타세요")
+    }
 }
 
 protocol WarmUpEquipment {
-    var color: String { get set }
-    var material: String { get set }
-    
-    func warmingUp()
+    var targetToMassage: bodyPart { get set }
+    var minutes: Int { get set }
+}
+
+extension WarmUpEquipment {
+    func warmingUp() {
+        print("\(targetToMassage)을(를) \(minutes)분 동안 마사지하세요.")
+    }
 }
 
 protocol Facilities {
@@ -62,149 +72,112 @@ enum EquipmentBrand {
     case wodFriends
 }
 
-// 운동 도구의 재료를 표현하려면, 열거형으로 둘게 아니라 재료 종류를 배열로 둬야하나?
-//enum Material {
-//    case steel
-//    case rubber
-//}
+enum WeightLiftingSession {
+    case snatch
+    case clean
+}
+
+enum bodyPart {
+    case backNeck
+    case back
+    case shoulder
+    case foreArm
+    case chest
+    case glute
+    case leg
+    case ankle
+    case wrist
+}
 
 //MARK: - 워밍업 도구
-class foamRoller: WarmUpEquipment {
-    var color: String
-    var material: String // 재료 특성을 enum으로 만들어볼까?
+
+class FoamRoller: WarmUpEquipment {
+    var targetToMassage: bodyPart
+    var minutes: Int
     
-    init(color: String, material: String) {
-        self.color = color
-        self.material = material
-    }
-    
-    func warmingUp() {
-        // 정강이, 종아리, 허벅지 앞과 뒤, 엉덩이, 광배를 마사지함
+    init(targetToMassage: bodyPart, minutes: Int) {
+        self.targetToMassage = targetToMassage
+        self.minutes = minutes
     }
 }
 
-class massageBall: WarmUpEquipment {
-    var color: String
-    var material: String
+class MassageBall: WarmUpEquipment {
+    var targetToMassage: bodyPart
+    var minutes: Int
     
-    init(color: String, material: String) {
-        self.color = color
-        self.material = material
-    }
-    
-    func warmingUp() {
-        // 전완, 승모근 마사지
+    init(targetToMassage: bodyPart, minutes: Int) {
+        self.targetToMassage = targetToMassage
+        self.minutes = minutes
     }
 }
 
-class rubberBand: WarmUpEquipment {
-    var color: String
-    var material: String
+class RubberBand: WarmUpEquipment {
+    var targetToMassage: bodyPart
+    var minutes: Int
     
-    init(color: String, material: String) {
-        self.color = color
-        self.material = material
+    init(targetToMassage: bodyPart, minutes: Int) {
+        self.targetToMassage = targetToMassage
+        self.minutes = minutes
     }
-    
-    func warmingUp() {
-        // 발목, 손목 그리고 가슴 스트레칭
-    }
-    
-    
 }
 
-class pvcPipe: WarmUpEquipment {
-    var color: String
-    var material: String
+class PvcPipe: WarmUpEquipment {
+    var targetToMassage: bodyPart
+    var minutes: Int
     
-    init(color: String, material: String) {
-        self.color = color
-        self.material = material
-    }
-    
-    func warmingUp() {
-        // 역도 동작 스트레칭
+    init(targetToMassage: bodyPart, minutes: Int) {
+        self.targetToMassage = targetToMassage
+        self.minutes = minutes
     }
 }
 
 //MARK: - 유산소 머신
-//    zone 2 트레이닝
-//    => 바이크 에르그(damp를 몇으로 설정해, rpm 몇으로 몇 분 탄다) => 바이크 에르그에는 시간, rpm, damp가 프로퍼티로 있어야함
 
 class RowingMachine: CardioMachine {
     var rpm: Int
     var damp: Int
-    var cal: Int
     var min: Int
-    var meter: Int
     
-    init(rpm: Int, damp: Int, cal: Int, min: Int, meter: Int) {
+    init(rpm: Int, damp: Int, min: Int) {
         self.rpm = rpm
         self.damp = damp
-        self.cal = cal
         self.min = min
-        self.meter = meter
-    }
-    
-    func zone2Training() {
-        // 어떤 머신으로 얼마의 시간동안 얼마의 rpm을 유지해서 몇 미터를 갔는가?
     }
 }
 
 class AssaultBike: CardioMachine {
     var rpm: Int
     var damp: Int
-    var cal: Int
     var min: Int
-    var meter: Int
     
-    init(rpm: Int, damp: Int, cal: Int, min: Int, meter: Int) {
+    init(rpm: Int, damp: Int, min: Int) {
         self.rpm = rpm
         self.damp = damp
-        self.cal = cal
         self.min = min
-        self.meter = meter
-    }
-    
-    func zone2Training() {
     }
 }
 
 class SkiErg: CardioMachine {
     var rpm: Int
     var damp: Int
-    var cal: Int
     var min: Int
-    var meter: Int
     
-    init(rpm: Int, damp: Int, cal: Int, min: Int, meter: Int) {
+    init(rpm: Int, damp: Int, min: Int) {
         self.rpm = rpm
         self.damp = damp
-        self.cal = cal
         self.min = min
-        self.meter = meter
-    }
-    
-    func zone2Training() {
     }
 }
 
 class BikeErg: CardioMachine {
     var rpm: Int
     var damp: Int
-    var cal: Int
     var min: Int
-    var meter: Int
     
-    init(rpm: Int, damp: Int, cal: Int, min: Int, meter: Int) {
+    init(rpm: Int, damp: Int, min: Int) {
         self.rpm = rpm
         self.damp = damp
-        self.cal = cal
         self.min = min
-        self.meter = meter
-    }
-    
-    func zone2Training() {
     }
 }
 
@@ -212,7 +185,7 @@ class BikeErg: CardioMachine {
 
 class Coach: Human {
     var name: String // 코치 두 분으로 할 수 있으면 해보자
-    var shoes: ShoesType // 신발 브랜드를 노불, 나이키, tyr이렇게 세개로 선택 할 수 있게 해보자
+    var shoes: ShoesType
     var bodyWeight: Int
     
     init(name: String, shoes: ShoesType, bodyWeight: Int) {
@@ -235,12 +208,13 @@ class Coach: Human {
 }
 
 class Athlete: Human {
-    // 나중에 여기에 snatchPR, cleanPR을 넣어서 에슬릿 키우기 때 써보자
     var name: String // 회원별로 이름 다르게 3명 정도? 만들어보기
     var bodyWeight: Int
     var shoes: ShoesType
     var gears: [String]
-
+    var snatchPR: Int = 45 // 이거를 성별에 따른 바벨의 무게로 설정할 수 있게 하자
+    var cleanPR: Int = 45
+    
     init(name: String, bodyWeight: Int, shoes: ShoesType, gears: [String]) {
         self.name = name
         self.bodyWeight = bodyWeight
@@ -248,38 +222,32 @@ class Athlete: Human {
         self.gears = gears
     }
     
-    func takeAClass() {
+    // Result를 성공확률의 성질을 갖게 하고 싶음 => 숫자가 1,2로 임의 뽑기를 해서 성공 실패로 다음 도전무게를 10lb 추가하는걸로
+    func doWeightLifting(session: WeightLiftingSession, athleteName: String, lastSnatchPR: Int , result: Bool) {
         
-    }
-    
-    // 이거를 숫자가 1,2로 임의 뽑기를 해서 성공 실패로 다음 도전무게를 10lb 추가하는걸로
-// 여기서 인자의 값 타입을 이렇게 주면 안 될 듯 정확하게 클래스틔 프로퍼티나 열거형의 케이스 타입을 받아야 할 듯
-    func doWeightLifting(session: String, athleteName: String, barbellWeight: Int) {
-        //1.  워밍업 도구로 워밍업
-        //2. pvc파이프로 동작 연습
-        
-// 이 메서드 안에서 에슬릿 인스턴스를 만들면, 인스턴스가 중복 생성됨 => 인스턴스를 인자로 받자
-//        let myAthlete = Member(name: "권현석", bodyWeight: 66, shoes: .nike, gears: ["wrist guards", "knee sleeves"])
-        
-        if session == "snatch" {
-            print("\(athleteName)이 \(barbellWeight)스내치를 성공했습니다")
-        } else if session == "clean" {
-            print("\(athleteName)이 클린을 성공했습니다")
+        if session == .snatch {
+            if result == true {
+                print("\(snatchPR)lb 스내치를 성공했습니다. \(athleteName)의 스내치 PR은 \(snatchPR)입니다.")
+                snatchPR += 10
+                print("다음번에는 \(snatchPR)lb 스내치에 도전해보세요")
+            } else {
+                snatchPR
+                print("스내치를 실패했습니다. 좀 더 집중해서 다시 해봅시다.")
+            }
+        } else if session == .clean {
+            if result == true {
+                print("\(cleanPR)lb 클린을 성공했습니다. \(athleteName)의 클린 PR은 \(cleanPR)입니다.")
+                cleanPR += 10
+                print("다음번에는 \(cleanPR)lb 클린에 도전해보세요")
+            } else {
+                cleanPR
+                print("클린을 실패했습니다. 좀 더 집중해서 다시 해봅시다.")
+            }
         }
-        // 스내치, 클린에 대한 선택권을 제어문을 통해 주고, 바벨무게 계산이 되어야하며 그 바벨로 수행한 훈련 메세지가 떠야함
     }
 }
 
-
-let alex: Athlete = .init(name: "권현석", bodyWeight: 66, shoes: .nike, gears: ["wrist band", "knee sleeves", "lifting belt"])
-// session을 싱글톤 패턴으로 사용하자 아니면 열거형으로, barbell을 어떻게 인스턴스 생성을 해야하지?
-//alex.doWeightLifting(session: "snatch", athleteName: alex.name, barbellWeight: .)
-
 //MARK: - 시설
-//    시설
-//    샤워실
-//    화장실
-//    리셉션
 
 class ShowerRoom: Facilities {
     var numberOfShowerBooth: Int
@@ -289,7 +257,7 @@ class ShowerRoom: Facilities {
         self.numberOfShowerBooth = numberOfShowerBooth
         self.numberOfPeople = numberOfPeople
     }
-
+    
     // 차가운물: true, 뜨거운 물: false
     func takeAShower(waterTemp: Bool) {
         if waterTemp == true {
@@ -345,7 +313,9 @@ class Reception: Facilities {
         }
     }
     
-//MARK: - 운동기구
+    //MARK: - 운동기구
+    
+    // 아래의 세 클래스의 운동기구가 각각 박스에 몇개씩 있는지 표현해보자
     
     // 해당 클래스는 바벨 하나의 특성을 나타내므로 바벨 하나의 특성만 나타낼 수 있도록 함
     class Barbell: WeightEqupiment {
