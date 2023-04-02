@@ -149,20 +149,19 @@ class SelectChampScreen {
 class InGame {
 // 타임은 시간 표시 하려고 넣었었음 => 게임 시간
     var time: Int
-    var minionNumber: Int
+    var minionNumber: Int = 0
     var minionAlive: [Minion] = []
     var timer: Timer?
+    var myChampion: Champion
 
-    init(time: Int, minionNumber: Int) {
+    init(time: Int, myChampion: Champion) {
         self.time = time
-        self.minionNumber = minionNumber
+        self.myChampion = myChampion
     }
 
     //    챔피언 인스턴스가 하나 있겠지? 왜냐하면 챔피언을 고르고 게임을 시작한 상태가 인게임 상태이니까 => 근데 이 챔피언이 'SelectChampScreen' 클래스의 'selectChampion'에 의해 만들어진 챔피언이야 함
 // myChampion은 징크스다
     var nexus: Nexus = .init()
-    // 이거를 바꿔야하지 않을까? => 메서드를 통해 챔피언이 생성되도록 가령 selectChampionScreen에 있는 selectChampion 메서드처럼
-    var myChampion = SelectChampScreen().selectChampion(selected: .jinx)
 
     func startGame() {
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(giveGold), userInfo: nil, repeats: true)
