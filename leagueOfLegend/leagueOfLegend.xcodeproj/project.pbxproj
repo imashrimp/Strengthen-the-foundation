@@ -14,6 +14,8 @@
 		1739CDA829D5AD1C0066EC38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1739CDA729D5AD1C0066EC38 /* Assets.xcassets */; };
 		1739CDAB29D5AD1C0066EC38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1739CDA929D5AD1C0066EC38 /* LaunchScreen.storyboard */; };
 		1739CDB329D5AD6B0066EC38 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739CDB229D5AD6B0066EC38 /* MainViewController.swift */; };
+		174D0DFB29DFE5EA00978934 /* champListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D0DFA29DFE5EA00978934 /* champListTableViewCell.swift */; };
+		17CDAFE429DFE0900024C8AB /* ChamptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		1739CDAA29D5AD1C0066EC38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1739CDAC29D5AD1C0066EC38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1739CDB229D5AD6B0066EC38 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		174D0DFA29DFE5EA00978934 /* champListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = champListTableViewCell.swift; sourceTree = "<group>"; };
+		17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamptionListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				1739CD9E29D5AD1B0066EC38 /* AppDelegate.swift */,
 				1739CDA029D5AD1B0066EC38 /* SceneDelegate.swift */,
 				1739CDA229D5AD1B0066EC38 /* ViewController.swift */,
+				17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */,
+				174D0DFA29DFE5EA00978934 /* champListTableViewCell.swift */,
 				1739CDA429D5AD1B0066EC38 /* Main.storyboard */,
 				1739CDA729D5AD1C0066EC38 /* Assets.xcassets */,
 				1739CDA929D5AD1C0066EC38 /* LaunchScreen.storyboard */,
@@ -144,7 +150,9 @@
 				1739CDA329D5AD1B0066EC38 /* ViewController.swift in Sources */,
 				1739CD9F29D5AD1B0066EC38 /* AppDelegate.swift in Sources */,
 				1739CDA129D5AD1B0066EC38 /* SceneDelegate.swift in Sources */,
+				174D0DFB29DFE5EA00978934 /* champListTableViewCell.swift in Sources */,
 				1739CDB329D5AD6B0066EC38 /* MainViewController.swift in Sources */,
+				17CDAFE429DFE0900024C8AB /* ChamptionListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

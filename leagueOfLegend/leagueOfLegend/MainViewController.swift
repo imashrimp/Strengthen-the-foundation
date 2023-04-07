@@ -9,7 +9,7 @@
 
 import Foundation
 
-enum ChampionList {
+enum ChampionList: CaseIterable {
     case jinx
     case sivir
     case ashe
