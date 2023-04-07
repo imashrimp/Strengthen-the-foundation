@@ -20,17 +20,17 @@ enum ChampionList: CaseIterable {
     var champion: Champion {
         switch self {
         case .jinx:
-            return .init(name: "Jinx", hp: 250, offensePower: 70, gold: 0)
+            return .init(name: "징크스", hp: 250, offensePower: 70, gold: 0)
         case .sivir:
-            return .init(name: "Sivir", hp: 270, offensePower: 75, gold: 0)
+            return .init(name: "시비르", hp: 270, offensePower: 75, gold: 0)
         case .ashe:
-            return .init(name: "Ashe", hp: 280, offensePower: 68, gold: 0)
+            return .init(name: "애쉬", hp: 280, offensePower: 68, gold: 0)
         case .ezreal:
-            return .init(name: "Ezreal", hp: 260, offensePower: 70, gold: 0)
+            return .init(name: "이즈리얼", hp: 260, offensePower: 70, gold: 0)
         case .jhin:
-            return .init(name: "Jhin", hp: 280, offensePower: 78, gold: 0)
+            return .init(name: "진", hp: 280, offensePower: 78, gold: 0)
         case .kaisa:
-            return .init(name: "Kaisa", hp: 270, offensePower: 72, gold: 0)
+            return .init(name: "카이사", hp: 270, offensePower: 72, gold: 0)
         }
     }
 }

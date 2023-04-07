@@ -19,9 +19,44 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-bL-AOg">
                                 <rect key="frame" x="20" y="59" width="353" height="664.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="UL4-b7-a6q">
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3RA-ap-KQX">
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4e-Ib-oHG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="104.33333333333333" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4f-oe-9lr">
+                                                    <rect key="frame" x="124.33333333333334" y="0.0" width="104.33333333333334" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITu-8D-mQK">
+                                                    <rect key="frame" x="248.66666666666666" y="0.0" width="104.33333333333334" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="3RA-ap-KQX" firstAttribute="centerX" secondItem="UL4-b7-a6q" secondAttribute="centerX" id="RRs-bo-1em"/>
+                                        <constraint firstItem="3RA-ap-KQX" firstAttribute="top" secondItem="UL4-b7-a6q" secondAttribute="top" id="ZI6-yg-zQY"/>
+                                        <constraint firstItem="3RA-ap-KQX" firstAttribute="leading" secondItem="UL4-b7-a6q" secondAttribute="leading" id="qf6-jf-CwK"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="championCell" id="es7-pl-hj3" customClass="champListTableViewCell" customModule="leagueOfLegend" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="94" width="353" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="es7-pl-hj3" id="fU6-Ak-DJa">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
@@ -83,7 +118,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="champHPHeader" destination="p4f-oe-9lr" id="9AL-IZ-BfJ"/>
                         <outlet property="champListTableView" destination="y9R-bL-AOg" id="vPk-eR-GAz"/>
+                        <outlet property="champNameHeader" destination="H4e-Ib-oHG" id="pnO-xV-R37"/>
+                        <outlet property="champOffensePowerHeader" destination="ITu-8D-mQK" id="OBL-16-DQF"/>
+                        <outlet property="champSelectButton" destination="XE5-km-HEs" id="G0T-rO-GlL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

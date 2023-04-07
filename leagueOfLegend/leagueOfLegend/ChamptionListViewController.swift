@@ -10,17 +10,25 @@ import UIKit
 // 여기서 테이블 뷰 컨트롤러 사용해 챔피언 목록 불러오고(이거 하려면 챔피언 클래스 필요함) 버튼 연결해서 다음 화면으로 연결 될 수 있도록
 class ChampionListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-    
     @IBOutlet weak var champListTableView: UITableView!
+    @IBOutlet weak var champNameHeader: UILabel!
+    @IBOutlet weak var champHPHeader: UILabel!
+    @IBOutlet weak var champOffensePowerHeader: UILabel!
+    @IBOutlet weak var champSelectButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 아래 두 줄 왜 적는 거지? => UITableViewDataSource, UITableViewDelegate 프로토콜을 사용해 프로토콜이 가진 메서드를 작동시키기 위해 필요한 코드라고 생각하면 되는건가요? / 제가 본 블로그에서는 화면에 표현하기 위해 아래 두줄을 적어준다고 적혀있었습니다.
         champListTableView.delegate = self
         champListTableView.dataSource = self
+        
+        champNameHeader.text = "챔피언"
+        champHPHeader.text = "HP"
+        champOffensePowerHeader.text = "공격력"
+        champSelectButton.setTitle("챔피언 선택", for: .normal)
+        champSelectButton.setTitleColor(.white, for: .normal)
+        champSelectButton.backgroundColor = .black
     }
-    
     // 섹션 숫자를 안 정하면 그냥 하나로 보는건가?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,3 +48,4 @@ class ChampionListViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
 }
+
