@@ -7,7 +7,7 @@
 
 import UIKit
 
-class champListTableViewCell: UITableViewCell {
+class ChampListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var champName : UILabel!
     @IBOutlet weak var champHP : UILabel!
