@@ -16,6 +16,9 @@
 		1739CDB329D5AD6B0066EC38 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739CDB229D5AD6B0066EC38 /* MainViewController.swift */; };
 		174D0DFE29E1164300978934 /* ChampionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D0DFC29E1164300978934 /* ChampionTableViewCell.swift */; };
 		174D0DFF29E1164300978934 /* ChampionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 174D0DFD29E1164300978934 /* ChampionTableViewCell.xib */; };
+		178B678D29E527020040D5F6 /* ItemShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178B678C29E527020040D5F6 /* ItemShopViewController.swift */; };
+		178B679429E631CE0040D5F6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178B679229E631CE0040D5F6 /* ItemTableViewCell.swift */; };
+		178B679529E631CE0040D5F6 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178B679329E631CE0040D5F6 /* ItemTableViewCell.xib */; };
 		17CDAFE429DFE0900024C8AB /* ChamptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */; };
 		17F8067229E3F5A00009B603 /* InGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8067129E3F5A00009B603 /* InGame.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +35,9 @@
 		1739CDB229D5AD6B0066EC38 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		174D0DFC29E1164300978934 /* ChampionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionTableViewCell.swift; sourceTree = "<group>"; };
 		174D0DFD29E1164300978934 /* ChampionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChampionTableViewCell.xib; sourceTree = "<group>"; };
+		178B678C29E527020040D5F6 /* ItemShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemShopViewController.swift; sourceTree = "<group>"; };
+		178B679229E631CE0040D5F6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		178B679329E631CE0040D5F6 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamptionListViewController.swift; sourceTree = "<group>"; };
 		17F8067129E3F5A00009B603 /* InGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +79,8 @@
 				1739CDA429D5AD1B0066EC38 /* Main.storyboard */,
 				174D0DFC29E1164300978934 /* ChampionTableViewCell.swift */,
 				174D0DFD29E1164300978934 /* ChampionTableViewCell.xib */,
+				178B679229E631CE0040D5F6 /* ItemTableViewCell.swift */,
+				178B679329E631CE0040D5F6 /* ItemTableViewCell.xib */,
 				1739CDA729D5AD1C0066EC38 /* Assets.xcassets */,
 				1739CDA929D5AD1C0066EC38 /* LaunchScreen.storyboard */,
 				1739CDAC29D5AD1C0066EC38 /* Info.plist */,
@@ -85,6 +93,7 @@
 			children = (
 				1739CDA229D5AD1B0066EC38 /* InGameViewController.swift */,
 				17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */,
+				178B678C29E527020040D5F6 /* ItemShopViewController.swift */,
 				1739CDB229D5AD6B0066EC38 /* MainViewController.swift */,
 			);
 			path = ViewController;
@@ -151,6 +160,7 @@
 				174D0DFF29E1164300978934 /* ChampionTableViewCell.xib in Resources */,
 				1739CDAB29D5AD1C0066EC38 /* LaunchScreen.storyboard in Resources */,
 				1739CDA829D5AD1C0066EC38 /* Assets.xcassets in Resources */,
+				178B679529E631CE0040D5F6 /* ItemTableViewCell.xib in Resources */,
 				1739CDA629D5AD1B0066EC38 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,12 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1739CDA329D5AD1B0066EC38 /* InGameViewController.swift in Sources */,
+				178B679429E631CE0040D5F6 /* ItemTableViewCell.swift in Sources */,
 				1739CD9F29D5AD1B0066EC38 /* AppDelegate.swift in Sources */,
 				174D0DFE29E1164300978934 /* ChampionTableViewCell.swift in Sources */,
 				1739CDA129D5AD1B0066EC38 /* SceneDelegate.swift in Sources */,
 				1739CDB329D5AD6B0066EC38 /* MainViewController.swift in Sources */,
 				17CDAFE429DFE0900024C8AB /* ChamptionListViewController.swift in Sources */,
 				17F8067229E3F5A00009B603 /* InGame.swift in Sources */,
+				178B678D29E527020040D5F6 /* ItemShopViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

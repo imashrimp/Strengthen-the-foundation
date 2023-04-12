@@ -35,7 +35,7 @@ enum ChampionList: CaseIterable {
     }
 }
 
-enum ItemList {
+enum ItemList: CaseIterable {
     case longSword
     case bfSword
     case trinityForce
@@ -46,17 +46,17 @@ enum ItemList {
     var itemIBought: Item {
         switch self {
         case .longSword:
-            return .init(expense: 200, extraPower: 10, name: "Long Sword")
+            return .init(expense: 200, extraPower: 10, name: "롱소드")
         case .bfSword:
-            return .init(expense: 700, extraPower: 35, name: "B.F Sword")
+            return .init(expense: 700, extraPower: 35, name: "BF 대검")
         case .trinityForce:
-            return .init(expense: 2500, extraPower: 70, name: "Trinity Force")
+            return .init(expense: 2500, extraPower: 70, name: "삼위일체")
         case .krakenSlayer:
-            return .init(expense: 3000, extraPower: 80, name: "Kraken Slayer")
+            return .init(expense: 3000, extraPower: 80, name: "크라켄 학살자")
         case .infinityEdge:
-            return .init(expense: 3500, extraPower: 100, name: "Infinity Edge")
+            return .init(expense: 3500, extraPower: 100, name: "무한의 대검")
         case .bloodthirster:
-            return .init(expense: 3700, extraPower: 130, name: "Bloodthirster")
+            return .init(expense: 3700, extraPower: 130, name: "피바라기")
         }
     }
 }
@@ -137,7 +137,7 @@ class SelectChampScreen {
     // => 반환하는게 좋을 듯 바로 할당되면 편하니까 => 조금 더 생각해보자
 //    아래 메서드가 인게임 클래스 내에서 호출되어 챔피언 타입의 프로퍼티에 할당되어야함
     func selectChampion(selected: ChampionList) -> Champion {
-        var myChampion = selected.champion
+        let myChampion = selected.champion
         print("플레이할 챔피언은 \(myChampion.name)입니다!")
         return myChampion
     }

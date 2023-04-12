@@ -45,6 +45,9 @@ class ChampionListViewController: UIViewController {
         vc.loadView()
         // 인게임 뷰컨(불러온 뷰컨)에 테이블 뷰에서 선택된 챔피언의 인스턴스 추가하기
         vc.setChampion(champion: selectedChampion[0])
+        
+        // 여기서 만약에 넥서스를 생성해버리면 화면전환과 함께 넥서스 피가 화면에 표시될까? 그리고 이게 되면 미니언 숫자도 0으로 표시하기
+        
         // 네비게이션 컨트롤러로 화면 'push' 전환하기
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -55,19 +58,19 @@ extension ChampionListViewController: UITableViewDataSource {
     // 섹션 숫자를 안 정하면 그냥 하나로 보는건가?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 챔피언 리스트 열거형의 케이스 숫자를 받아와 케이스의 숫자만큼 행을 생성
+//         챔피언 리스트 열거형의 케이스 숫자를 받아와 케이스의 숫자만큼 행을 생성
         let championListNumber = ChampionList.allCases.count
         return championListNumber
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChampionTableViewCell", for: indexPath) as! ChampionTableViewCell
-        
+
         // 챔피언 목록 위에 표처럼 챔피언이름, HP, 공격력 이렇게 표시하고 싶은데 어떻게 해야하지?
         cell.champNameLabel.text = ChampionList.allCases[indexPath.row].champion.name
         cell.champHPLabel.text = "\(ChampionList.allCases[indexPath.row].champion.hp)"
         cell.champOffensePowerLabel.text = "\(ChampionList.allCases[indexPath.row].champion.offensePower)"
-        
+
         return cell
     }
 }

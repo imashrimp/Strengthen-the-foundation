@@ -10,6 +10,8 @@ import Foundation
 protocol PlayGame: AnyObject {
     func showGold()
     func showMinionCount()
+    func showPlayTime()
+    func showNexusHP()
 }
 
 //얘가 여자친구 왜? => 데이터 변하는걸 주고싶은 애가 여자친구여야함 이게 무슨 말? => 얘는 골드도 자동 생성하고 미니언도 자동생성함. 이게 데이터가 변하는거임 그래서 이런걸 갖고 남자친구한테 "나 골드도 만들고 미니언도 만들었음 그러니까 니가 화면에 표시하셈"이라고 얘기하는 여자친구가 되는거임
@@ -31,9 +33,10 @@ class InGame {
     var nexus: Nexus = .init()
     
     func startGame() {
+        // 여기에 넥서스를 생성하는 메서드를 실행시켜서 이 메서드가 실행되자마자 넥서스 인스턴스를 받아올 수 있도록해야함
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(giveGold), userInfo: nil, repeats: true)
-        showGametime()
-        spawnMinionOn30sec()
+        showGametime() // 게임시간 표시
+        spawnMinionOn30sec() // 미니언 30초 마다 3마리씩 추가
     }
     
     @objc func giveGold() {
@@ -70,8 +73,8 @@ class InGame {
         
         let minute = time / 60
         let second = time % 60
-        
         print(String(format: "게임 시간: %02d:%02d", minute, second))
+        self.delegate?.showPlayTime()
     }
     
 //    func countMinionNumber() {
@@ -113,6 +116,7 @@ class InGame {
         } else {
             gameFinished()
         }
+        self.delegate?.showNexusHP()
     }
     
     func doAttack() {
@@ -129,5 +133,7 @@ class InGame {
         // 제어문 같은거(아마 챔피언의 공격 메서드 내부의 제어문 일듯?)에서 'if nexus.hp < 0 { .gameFinished() }'로 이 메서드가 호출 될 듯 => 이 메서드는 꼭 여기에 위치할 필요가 없음
         timer?.invalidate()
         print("게임이 끝났습니다.")
+        // 여기서 게임 끝 화면으로 넘어가야함
+        
     }
 }
