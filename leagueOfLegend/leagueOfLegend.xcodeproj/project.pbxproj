@@ -21,6 +21,7 @@
 		178B679529E631CE0040D5F6 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 178B679329E631CE0040D5F6 /* ItemTableViewCell.xib */; };
 		17CDAFE429DFE0900024C8AB /* ChamptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */; };
 		17F8067229E3F5A00009B603 /* InGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F8067129E3F5A00009B603 /* InGame.swift */; };
+		17FF32CA29E7033F00529E90 /* GameDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FF32C929E7033F00529E90 /* GameDoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		178B679329E631CE0040D5F6 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChamptionListViewController.swift; sourceTree = "<group>"; };
 		17F8067129E3F5A00009B603 /* InGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGame.swift; sourceTree = "<group>"; };
+		17FF32C929E7033F00529E90 /* GameDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				17CDAFE329DFE0900024C8AB /* ChamptionListViewController.swift */,
 				178B678C29E527020040D5F6 /* ItemShopViewController.swift */,
 				1739CDB229D5AD6B0066EC38 /* MainViewController.swift */,
+				17FF32C929E7033F00529E90 /* GameDoneViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17FF32CA29E7033F00529E90 /* GameDoneViewController.swift in Sources */,
 				1739CDA329D5AD1B0066EC38 /* InGameViewController.swift in Sources */,
 				178B679429E631CE0040D5F6 /* ItemTableViewCell.swift in Sources */,
 				1739CD9F29D5AD1B0066EC38 /* AppDelegate.swift in Sources */,

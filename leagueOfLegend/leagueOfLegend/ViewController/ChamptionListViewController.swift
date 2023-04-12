@@ -8,7 +8,7 @@
 import UIKit
 
 class ChampionListViewController: UIViewController {
-//    이건 왜 있는거? => 챔피언을 인스턴스로 생성시 이를 받기 위함. 근데 왜 배열 형태로 받음? => 아마 열거형을 통해 'allCases'메서드를 사용해 배열 형태로 챔피언 인스턴스를 받아오기 때문이 아닌가 생각됨
+
     var selectedChampion: [Champion] = []
     
     @IBOutlet weak var champListTableView: UITableView!
@@ -32,7 +32,6 @@ class ChampionListViewController: UIViewController {
                 
         let championNib = UINib(nibName: "ChampionTableViewCell", bundle: nil)
         champListTableView.register(championNib, forCellReuseIdentifier: "ChampionTableViewCell")
-        
         champSelectButton.addTarget(self, action: #selector(pushToInGame), for: .touchUpInside)
     }
     
@@ -45,8 +44,6 @@ class ChampionListViewController: UIViewController {
         vc.loadView()
         // 인게임 뷰컨(불러온 뷰컨)에 테이블 뷰에서 선택된 챔피언의 인스턴스 추가하기
         vc.setChampion(champion: selectedChampion[0])
-        
-        // 여기서 만약에 넥서스를 생성해버리면 화면전환과 함께 넥서스 피가 화면에 표시될까? 그리고 이게 되면 미니언 숫자도 0으로 표시하기
         
         // 네비게이션 컨트롤러로 화면 'push' 전환하기
         self.navigationController?.pushViewController(vc, animated: true)

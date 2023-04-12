@@ -260,6 +260,9 @@
                                 <rect key="frame" x="159" y="753.66666666666663" width="75" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="buyItemPressed:" destination="Ye5-Vm-G36" eventType="touchUpInside" id="haD-SU-zf0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="57F-yf-ATo"/>
@@ -285,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="2754.9618320610684" y="-208.45070422535213"/>
         </scene>
-        <!--Game Finished View Controller-->
+        <!--Game Done View Controller-->
         <scene sceneID="eka-JB-pcw">
             <objects>
-                <viewController id="CSk-lG-gAv" customClass="GameFinishedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameDone" id="CSk-lG-gAv" customClass="GameDoneViewController" customModule="leagueOfLegend" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9y-9V-t7T">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,6 +310,9 @@
                             <constraint firstItem="X7k-Vp-dN1" firstAttribute="centerX" secondItem="c9y-9V-t7T" secondAttribute="centerX" id="xWq-q6-u98"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameDoneLabel" destination="X7k-Vp-dN1" id="q3q-Eo-dgc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNz-hJ-WQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

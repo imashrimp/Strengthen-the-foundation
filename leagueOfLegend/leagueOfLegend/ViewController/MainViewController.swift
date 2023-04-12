@@ -99,16 +99,26 @@ class Champion {
         self.gold = gold
     }
     
-    func buyItem(item: ItemList) {
-        if gold >= item.itemIBought.expense {
-            itemArray.append(item.itemIBought)
-            offensePower += item.itemIBought.extraPower
-            gold -= item.itemIBought.expense
-            print("\(name)(이)가 \(item.itemIBought.name)을 구입했습니다. 공격력이 \(item.itemIBought.extraPower)(이)가 추가되어 \(offensePower)가 되었습니다.")
-        } else {
-            print("골드가 부족합니다")
-        }
-    }
+//    func buyItem(item: ItemList) {
+//        if gold >= item.itemIBought.expense {
+//            itemArray.append(item.itemIBought)
+//            offensePower += item.itemIBought.extraPower
+//            gold -= item.itemIBought.expense
+//            print("\(name)(이)가 \(item.itemIBought.name)을 구입했습니다. 공격력이 \(item.itemIBought.extraPower)(이)가 추가되어 \(offensePower)가 되었습니다.")
+//        } else {
+//            print("골드가 부족합니다")
+//        }
+//    }
+    
+//    func buyItem(item: Item) {
+//        if gold >= item.expense {
+//            itemArray.append(item)
+//            offensePower += item.extraPower
+//            gold -= item.expense
+//        } else {
+//            print("골드가 부족합니다.")
+//        }
+//    }
 }
 
 class Nexus {

@@ -5,12 +5,17 @@
 //  Created by 권현석 on 2023/04/11.
 //
 
-//그냥 테이블 뷰가 문제인 듯 => 셀 생성 자체가 안 됨
+// 여기서 해야할 거
+// 1. 인게임에 이미 받아져 있는 챔피언을 가져와서 아이템을 추가해 다시 인게임으로 보내면 됨
+
 import UIKit
 
 class ItemShopViewController: UIViewController {
     
-    var selectedItem: [Item] = []
+    var selectedItem: Item = .init(expense: 0, extraPower: 0, name: "")
+//    var selectedItem: [Item] = []
+    var inGame = InGame(myChampion: .init(name: "", hp: 0, offensePower: 0, gold: 0))
+
     
     @IBOutlet weak var itemTableView: UITableView!
     @IBOutlet weak var itemNameLabel: UILabel!
@@ -20,7 +25,6 @@ class ItemShopViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,15 +43,17 @@ class ItemShopViewController: UIViewController {
         let itemNib = UINib(nibName: "ItemTableViewCell", bundle: nil)
         itemTableView.register(itemNib, forCellReuseIdentifier: "ItemTableViewCell")
     }
+    
+    @IBAction func buyItemPressed(_ sender: UIButton) {
+        // 미니언 공격이나 챔피언 공격 모두 InGame 클래스의 프로퍼티인 myChampion을 사용하고 있음 그게 챔피언의 골드를 받아오니까 myChampion을 사용해보자
+//        여기서 골드가 왜 0인데? => 왜냐? 여기있는 inGame의 챔피언 인스턴스는 인게임뷰컨의 챔피언 인스턴스가 아니거든
+//        그러면 상점으로 가기 버튼을 누르면 
+        print("내 챔피언이 가진 골드는 \(inGame.myChampion.gold)입니다!!!!!!!!!!!")
+        inGame.shopping(item: selectedItem)
+
+    }
 }
 
-// 일단 uibutton이라 치고 ㅋㅋ
-func button() {
-    // selectedItem 배열에 추가된 아이템을 받아와서 아이템 구입 버튼을 누르면, InGame 클래스에 있는 shopping()메서드가 호출되어야함 => 이 메서드는 아이템을 구입하면 아이템에 해당하는 골드만큼 챔피언이 소유한 골드에서 차감되고 인게임 화면에 설정된 챔피언의 공격력이 추가되면 됨
-}
-
-
-// 아래 두 메서드가 실행이 안됨 => 셀 등록에 문제가 있음
 extension ItemShopViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,12 +69,11 @@ extension ItemShopViewController: UITableViewDataSource {
         cell.itemExpenseLabel.text = String(ItemList.allCases[indexPath.row].itemIBought.expense)
         return cell
     }
-    
-    
 }
 
 extension ItemShopViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedItem.append(ItemList.allCases[indexPath.row].itemIBought)
+//        self.selectedItem.append(ItemList.allCases[indexPath.row].itemIBought)
+        self.selectedItem = ItemList.allCases[indexPath.row].itemIBought
     }
 }
