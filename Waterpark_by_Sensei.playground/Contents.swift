@@ -1,4 +1,3 @@
-// foundation, uikit 차이 찾아보기
 import Foundation
 
 //MARK: - 프로토콜 모음
@@ -342,7 +341,6 @@ class WaterPark {
     let snackBar : SnackBar = .init(body: .steel)
     let changingRoom: ChangingRoom = .init(body: .wood, locker: .wood, clothes: .cotton)
     let ticketBox: TicketBox = .init(body: .steel)
-
     let wavePool: WavePool = .init(lifeGuard: .lifeGuardForWavePool)
     let lazyRiver: LazyRiver = .init(lifeGuard: .lifeGuardForLazyRiver)
     let waterSlide: WaterSlide = .init(lifeGuard: .lifeGuardForWaterSlide)

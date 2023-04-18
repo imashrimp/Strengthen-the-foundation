@@ -1,8 +1,7 @@
 import Foundation
 
 // 내일 할 일
-// 보호장비 열거형 만들기
-// athlete 클래스에 역도 메서드 수정(오전까지 해서 커밋하고 선생님한테 보내기)
+// 현재 Athlete 클래스 내부에 있는 doSnatch나 doClean 메서드가 작동될 때 콘솔에 표시되는 메세지도 escaping closure를 사용해서 늦게 나오면 좋겠음
 
 //MARK: - 프로토콜
 

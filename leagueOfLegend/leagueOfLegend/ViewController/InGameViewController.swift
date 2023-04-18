@@ -7,22 +7,8 @@
 
 // 할거
 // 1. 아이템 구입 기능 작동시키기
-// 2. 미니언 공격, 넥서스 공격 버튼 설정하고 기능 구현하기 => 게임 시작 시 미니언 3마리 주기 => 게임 시작하고 30초 안에 넥서스 공격 광클하면 게임이 끝남 => 이거는 일단 게임이 작동하는데 문제 없음
-// 3. 넥서스 피가 0이하가 되면 마지막 스크린 불러오기
-// 4. 이건 미니언 공격 메서드, 넥서스 공격 메서드를 따로 실행시키고 미니언 숫자가 0이냐 아니야에 따라 버튼이 active 또는 inatctive 상태로 되도록 설정하기
-// 아래의 코드가 어디에 위치해야 할지 생각해보자 그리고 'enable'이 'isenable'일 수 있음
-
-/*
- if inGame.minionCount > 0 {
- attackMinionButton.enable = true
- attackNexusButton.enable = false
- } else {
- attackMinionButton.enable = false
- attackNexusButton.enable = true
- }
- */
-
-// 4. 챔피언 선택화면에서 챔피언 선택 안하고 챔피언 선택 버튼 눌렀을 때 처리하기
+// 2. 넥서스 피가 0이하가 되면 마지막 스크린 불러오기
+// 3. 이건 미니언 공격 메서드, 넥서스 공격 메서드를 따로 실행시키고 미니언 숫자가 0이냐 아니야에 따라 버튼이 active 또는 inatctive 상태로 되도록 설정하기
 
 import UIKit
 
@@ -63,6 +49,8 @@ class InGameViewController: UIViewController {
         attackMinionButton.setTitle("미니언 공격하기", for: .normal)
         attackMinionButton.setTitleColor(.white, for: .normal)
         attackMinionButton.backgroundColor = .black
+        // 미니언이 게임 실행 시 최초로 생성된 미니언 표시를 하기 위함. 처음에 바로 3마리를 주는 이유는 게임 시작하자마자 넥서스 공격을 할 수 없게 하려고
+        showMinionCount()
     }
     
     // 챔피언 선택화면에서 선택한 챔피언의 이름, 공격력, 골드 같은걸 화면에 있는 라벨에 표시할거임
@@ -81,11 +69,11 @@ class InGameViewController: UIViewController {
         inGame.startGame()
     }
     
-    
     @objc func pushToItemShop() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ItemShop") as! ItemShopViewController
         vc.loadView()
+        vc.inGame = self.inGame
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -119,15 +107,33 @@ extension InGameViewController: PlayGame {
     
     func showNexusHP() {
         // 넥서스 공격 받고 넥서스 피 바뀌는지 확인하면 됨
-        self.nexusHPLabel.text = String(inGame.nexus.hp)
+        self.nexusHPLabel.text = "넥서스 체력: \(inGame.nexus.hp)"
     }
     
     func showMyItem() {
-        self.champItemLabel.text = "\(inGame.myChampion.itemArray)"
+        self.champItemLabel.text = "아이템: \(inGame.myChampion.itemArray[0].name)"
     }
     
     func showMyOffensePower() {
-        self.champOffensePowerLabel.text = "\(inGame.myChampion.offensePower)"
+        self.champOffensePowerLabel.text = "공격력: \(inGame.myChampion.offensePower)"
+    }
+    
+    // 이게 제대로 작동이 안 됨
+    func onOffAttackButton() {
+        if inGame.minionAlive.count > 0 {
+            attackMinionButton.isEnabled = true
+            attackNexusButton.isEnabled = false
+        } else {
+            attackMinionButton.isEnabled = false
+            attackNexusButton.isEnabled = true
+        }
+    }
+    
+    func finishGame() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "GameDone") as! GameDoneViewController
+        vc.loadView()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
