@@ -25,7 +25,7 @@ class AlertView: UIView {
         label.font = .systemFont(ofSize: 18)
         label.textColor = .white
         label.textAlignment = .left
-        label.text = "당신만의 메모를 작성하고 관리해보세요 :)" // 이게 두 줄에 나눠서 나타나게
+        label.text = "당신만의 메모를 작성하고 관리해보세요!" // 이게 두 줄에 나눠서 나타나게
         label.numberOfLines = 0
         return label
     }()

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1733478B29F6BFC100779574 /* WriteMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1733478A29F6BFC100779574 /* WriteMemoViewController.swift */; };
 		179A976C29F2CC0E00361087 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976B29F2CC0E00361087 /* CustomView.swift */; };
 		179A976F29F5005300361087 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976E29F5005300361087 /* TableViewCell.swift */; };
+		179A977129F52CA500361087 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A977029F52CA500361087 /* SectionHeaderView.swift */; };
 		17C6758A29F2563500696B5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6758929F2563500696B5B /* AppDelegate.swift */; };
 		17C6758C29F2563500696B5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6758B29F2563500696B5B /* SceneDelegate.swift */; };
 		17C6758E29F2563500696B5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6758D29F2563500696B5B /* ViewController.swift */; };
@@ -20,8 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1733478A29F6BFC100779574 /* WriteMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMemoViewController.swift; sourceTree = "<group>"; };
 		179A976B29F2CC0E00361087 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		179A976E29F5005300361087 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		179A977029F52CA500361087 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		17C6758629F2563500696B5B /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C6758929F2563500696B5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17C6758B29F2563500696B5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,10 +49,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1733478C29F6BFD000779574 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1733478A29F6BFC100779574 /* WriteMemoViewController.swift */,
+				17C6758D29F2563500696B5B /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		179A976D29F2CC1E00361087 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				179A976B29F2CC0E00361087 /* CustomView.swift */,
+				179A977029F52CA500361087 /* SectionHeaderView.swift */,
 				17C675A229F2860C00696B5B /* AlertViewController.swift */,
 				179A976E29F5005300361087 /* TableViewCell.swift */,
 			);
@@ -74,10 +88,10 @@
 		17C6758829F2563500696B5B /* MemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				1733478C29F6BFD000779574 /* ViewController */,
 				179A976D29F2CC1E00361087 /* CustomView */,
 				17C6758929F2563500696B5B /* AppDelegate.swift */,
 				17C6758B29F2563500696B5B /* SceneDelegate.swift */,
-				17C6758D29F2563500696B5B /* ViewController.swift */,
 				17C6758F29F2563500696B5B /* Main.storyboard */,
 				17C6759229F2563600696B5B /* Assets.xcassets */,
 				17C6759429F2563600696B5B /* LaunchScreen.storyboard */,
@@ -163,10 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1733478B29F6BFC100779574 /* WriteMemoViewController.swift in Sources */,
 				179A976C29F2CC0E00361087 /* CustomView.swift in Sources */,
 				17C6758E29F2563500696B5B /* ViewController.swift in Sources */,
 				17C6758A29F2563500696B5B /* AppDelegate.swift in Sources */,
 				179A976F29F5005300361087 /* TableViewCell.swift in Sources */,
+				179A977129F52CA500361087 /* SectionHeaderView.swift in Sources */,
 				17C6758C29F2563500696B5B /* SceneDelegate.swift in Sources */,
 				17C675A329F2860C00696B5B /* AlertViewController.swift in Sources */,
 			);
