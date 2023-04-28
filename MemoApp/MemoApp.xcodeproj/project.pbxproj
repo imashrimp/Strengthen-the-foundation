@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1733478B29F6BFC100779574 /* WriteMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1733478A29F6BFC100779574 /* WriteMemoViewController.swift */; };
-		179A976C29F2CC0E00361087 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976B29F2CC0E00361087 /* CustomView.swift */; };
+		179A976C29F2CC0E00361087 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976B29F2CC0E00361087 /* CustomTableView.swift */; };
 		179A976F29F5005300361087 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976E29F5005300361087 /* TableViewCell.swift */; };
 		179A977129F52CA500361087 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A977029F52CA500361087 /* SectionHeaderView.swift */; };
 		17C6758A29F2563500696B5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6758929F2563500696B5B /* AppDelegate.swift */; };
@@ -19,11 +19,14 @@
 		17C6759629F2563600696B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C6759429F2563600696B5B /* LaunchScreen.storyboard */; };
 		17C6759F29F2636E00696B5B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 17C6759E29F2636E00696B5B /* SnapKit */; };
 		17C675A329F2860C00696B5B /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C675A229F2860C00696B5B /* AlertViewController.swift */; };
+		17EA501729F985CA003739C4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 17EA501629F985CA003739C4 /* Realm */; };
+		17EA501929F985CA003739C4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 17EA501829F985CA003739C4 /* RealmSwift */; };
+		17EA501D29F98908003739C4 /* MemoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA501C29F98908003739C4 /* MemoObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1733478A29F6BFC100779574 /* WriteMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMemoViewController.swift; sourceTree = "<group>"; };
-		179A976B29F2CC0E00361087 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		179A976B29F2CC0E00361087 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		179A976E29F5005300361087 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		179A977029F52CA500361087 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		17C6758629F2563500696B5B /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +38,7 @@
 		17C6759529F2563600696B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17C6759729F2563600696B5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17C675A229F2860C00696B5B /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		17EA501C29F98908003739C4 /* MemoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EA501929F985CA003739C4 /* RealmSwift in Frameworks */,
+				17EA501729F985CA003739C4 /* Realm in Frameworks */,
 				17C6759F29F2636E00696B5B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +67,7 @@
 		179A976D29F2CC1E00361087 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				179A976B29F2CC0E00361087 /* CustomView.swift */,
+				179A976B29F2CC0E00361087 /* CustomTableView.swift */,
 				179A977029F52CA500361087 /* SectionHeaderView.swift */,
 				17C675A229F2860C00696B5B /* AlertViewController.swift */,
 				179A976E29F5005300361087 /* TableViewCell.swift */,
@@ -90,6 +96,7 @@
 			children = (
 				1733478C29F6BFD000779574 /* ViewController */,
 				179A976D29F2CC1E00361087 /* CustomView */,
+				17EA501E29FB8D18003739C4 /* MeMoObjec */,
 				17C6758929F2563500696B5B /* AppDelegate.swift */,
 				17C6758B29F2563500696B5B /* SceneDelegate.swift */,
 				17C6758F29F2563500696B5B /* Main.storyboard */,
@@ -98,6 +105,14 @@
 				17C6759729F2563600696B5B /* Info.plist */,
 			);
 			path = MemoApp;
+			sourceTree = "<group>";
+		};
+		17EA501E29FB8D18003739C4 /* MeMoObjec */ = {
+			isa = PBXGroup;
+			children = (
+				17EA501C29F98908003739C4 /* MemoObject.swift */,
+			);
+			path = MeMoObjec;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +133,8 @@
 			name = MemoApp;
 			packageProductDependencies = (
 				17C6759E29F2636E00696B5B /* SnapKit */,
+				17EA501629F985CA003739C4 /* Realm */,
+				17EA501829F985CA003739C4 /* RealmSwift */,
 			);
 			productName = MemoApp;
 			productReference = 17C6758629F2563500696B5B /* MemoApp.app */;
@@ -149,6 +166,7 @@
 			mainGroup = 17C6757D29F2563500696B5B;
 			packageReferences = (
 				17C6759D29F2636E00696B5B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				17EA501529F985CA003739C4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 17C6758729F2563500696B5B /* Products */;
 			projectDirPath = "";
@@ -178,11 +196,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1733478B29F6BFC100779574 /* WriteMemoViewController.swift in Sources */,
-				179A976C29F2CC0E00361087 /* CustomView.swift in Sources */,
+				179A976C29F2CC0E00361087 /* CustomTableView.swift in Sources */,
 				17C6758E29F2563500696B5B /* ViewController.swift in Sources */,
 				17C6758A29F2563500696B5B /* AppDelegate.swift in Sources */,
 				179A976F29F5005300361087 /* TableViewCell.swift in Sources */,
 				179A977129F52CA500361087 /* SectionHeaderView.swift in Sources */,
+				17EA501D29F98908003739C4 /* MemoObject.swift in Sources */,
 				17C6758C29F2563500696B5B /* SceneDelegate.swift in Sources */,
 				17C675A329F2860C00696B5B /* AlertViewController.swift in Sources */,
 			);
@@ -410,6 +429,14 @@
 				kind = branch;
 			};
 		};
+		17EA501529F985CA003739C4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.38.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -417,6 +444,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 17C6759D29F2636E00696B5B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		17EA501629F985CA003739C4 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17EA501529F985CA003739C4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		17EA501829F985CA003739C4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17EA501529F985CA003739C4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

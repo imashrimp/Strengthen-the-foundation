@@ -8,13 +8,14 @@
 // 작성시간 레이블, 세부내용 레이블을 스택뷰에 넣어서 뷰를 등록함 => 해당 두 레이블은 등록하지 않고, 스택뷰만 등록함
 
 import UIKit
+import SnapKit
 
 class TableViewCell: UITableViewCell {
     
     static let identifier = "TableViewCell"
-
+    
     let memoTitleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "메모 제목"
         label.textColor = .white
         label.textAlignment = .left
@@ -26,7 +27,7 @@ class TableViewCell: UITableViewCell {
         label.text = "메모 작성 시간"
         label.textColor = .systemGray
         label.textAlignment = .left
-         return label
+        return label
     }()
     
     let memodetailLabel: UILabel = {
@@ -34,15 +35,7 @@ class TableViewCell: UITableViewCell {
         label.text = "메모 내용"
         label.textColor = .systemGray
         label.textAlignment = .left
-         return label
-    }()
-    
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill // 이거 바뀔 수 있음 아마 .leading으로?
-        stackView.spacing = 5
-        return stackView
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -53,12 +46,9 @@ class TableViewCell: UITableViewCell {
     }
     
     private func addSubViews() {
-        [memoTitleLabel, stackView].forEach {
-            // 왜 contentView에 addSubView하지?
+        [memoTitleLabel, memoWriteTimeLabel, memodetailLabel].forEach {
             contentView.addSubview($0)
         }
-        stackView.addArrangedSubview(memoWriteTimeLabel)
-        stackView.addArrangedSubview(memodetailLabel)
     }
     
     private func configure() {
@@ -66,13 +56,20 @@ class TableViewCell: UITableViewCell {
     }
     
     private func makeConstraints() {
-        memodetailLabel.snp.makeConstraints { make in
+        memoTitleLabel.snp.makeConstraints { make in
             make.leading.top.equalToSuperview().offset(5)
         }
         
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(memodetailLabel.snp.bottom).offset(5)
-            make.leading.trailing.equalToSuperview().inset(5)
+        memoWriteTimeLabel.snp.makeConstraints { make in
+            make.top.equalTo(memoTitleLabel.snp.bottom).offset(5)
+            make.leading.bottom.equalToSuperview().inset(5)
+        }
+        
+        memodetailLabel.snp.makeConstraints { make in
+            make.top.equalTo(memoTitleLabel.snp.bottom).offset(5)
+            make.leading.equalTo(memoWriteTimeLabel.snp.trailing).offset(5)
+            make.trailing.equalToSuperview().offset(5).priority(.high)
+            make.bottom.equalToSuperview().inset(5)
         }
     }
     
