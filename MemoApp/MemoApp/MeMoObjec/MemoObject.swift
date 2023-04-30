@@ -10,14 +10,15 @@ import RealmSwift
 
 class MemoObject: Object {
     @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var memoDate = Date()
     @Persisted var memoTitle: String
     @Persisted var memoDetail: String
-    @Persisted var memoDate = Date()
     
-    convenience init(memoTitle: String, memoDetail: String, memoDate: Date = Date()) {
+    convenience init(memoTitle: String, memoDetail: String) {
         self.init()
         self.memoTitle = memoTitle
         self.memoDetail = memoDetail
-        self.memoDate = memoDate
     }
 }
+
+

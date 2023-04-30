@@ -13,6 +13,8 @@ class WriteMemoViewController: UIViewController {
     
     let realm = try! Realm()
     let textview: UITextView = UITextView()
+    var distributor: String? // 아니면 빈 문자열로 설정
+    var memoSequenceNumber: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,7 @@ class WriteMemoViewController: UIViewController {
         configure()
         makeConstraints()
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         self.textview.becomeFirstResponder()
@@ -31,9 +34,7 @@ class WriteMemoViewController: UIViewController {
     
     private func configure() {
         self.view.backgroundColor = .white
-        
-        // 이게 왜 필요한거지? => 아마도 저장하고 불러올 때 쓰려고 한거 같은데? 여튼, 필요 없을 듯
-//        textview.text = memoContentAll
+    
         textview.backgroundColor = .white
         textview.font = .systemFont(ofSize: 20)
         textview.delegate = self
@@ -51,13 +52,30 @@ class WriteMemoViewController: UIViewController {
     
     private func makeConstraints() {
         textview.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.edges.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
     }
-    
+
+    // UITextViewDelegate을 통해 textDidChange()메서드를 통해 저장하고, 업데이트 하면 아래의 메서드는 그냥 pop역할만 하도록 한다.
     @objc func saveMemo() {
-        if let memo =  textview.text, memo.count > 0 {
+        
+        if distributor == "edit" {
+            var memoContent = textview.text.components(separatedBy: .newlines) // 이건 배열 타입
+
+            let memoTitle = memoContent.remove(at: 0) //
+            // 나중에 배열 형태가 데이터를 화면에 나타내는데 편하면 배열형태로 저장하자
+            let memoDetail = memoContent.joined(separator: " ")
             
+            let memoObject = realm.objects(MemoObject.self)
+            let memoToUpdate = memoObject[memoSequenceNumber ?? 0]
+            
+            try! realm.write{
+                memoToUpdate.memoTitle = memoTitle
+                memoToUpdate.memoDetail = memoDetail
+            }
+            
+        } else if distributor == nil { // ** 주의 => 해당 뷰컨 선언 시 distributor를 옵셔널 타입으로 설정했는데, (거의 이건 nil 일거임) nil이 아닐 수 있으니 브레이크 포인트 걸어서 '새 메모 작성'의 경우 distributor의 값 확인해보기
+            // 여기서는 새로운 메모를 작성하기 위한 로직 작성 => 이전에 '완료'버튼에서 작성된 로직 그대로 작성하면 됨
             var memoContent = textview.text.components(separatedBy: .newlines) // 이건 배열 타입
             let memoTitle = memoContent.remove(at: 0) //
             
@@ -67,12 +85,8 @@ class WriteMemoViewController: UIViewController {
             try! realm.write{
                 realm.add(memoObject)
             }
-            
-            self.navigationController?.popViewController(animated: true)
-        } else {
-            // 메모가 없는 상태에서 '확인' 버튼을 누르면 그냥 화면 전환이 되도록
-            self.navigationController?.popViewController(animated: true)
         }
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
