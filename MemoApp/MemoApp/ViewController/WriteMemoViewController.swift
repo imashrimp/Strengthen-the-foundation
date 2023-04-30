@@ -37,7 +37,6 @@ class WriteMemoViewController: UIViewController {
     
         textview.backgroundColor = .white
         textview.font = .systemFont(ofSize: 20)
-        textview.delegate = self
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.tintColor = .systemOrange
@@ -72,6 +71,7 @@ class WriteMemoViewController: UIViewController {
             try! realm.write{
                 memoToUpdate.memoTitle = memoTitle
                 memoToUpdate.memoDetail = memoDetail
+                memoToUpdate.entireMemo = textview.text
             }
             
         } else if distributor == nil { // ** 주의 => 해당 뷰컨 선언 시 distributor를 옵셔널 타입으로 설정했는데, (거의 이건 nil 일거임) nil이 아닐 수 있으니 브레이크 포인트 걸어서 '새 메모 작성'의 경우 distributor의 값 확인해보기
@@ -81,7 +81,7 @@ class WriteMemoViewController: UIViewController {
             
             // 나중에 배열 형태가 데이터를 화면에 나타내는데 편하면 배열형태로 저장하자
             let memoDetail = memoContent.joined(separator: " ")
-            let memoObject = MemoObject(memoTitle: memoTitle, memoDetail: memoDetail)
+            let memoObject = MemoObject(memoTitle: memoTitle, memoDetail: memoDetail, entireMemo: textview.text)
             try! realm.write{
                 realm.add(memoObject)
             }
@@ -90,6 +90,3 @@ class WriteMemoViewController: UIViewController {
     }
 }
 
-extension WriteMemoViewController: UITextViewDelegate {
-    
-}

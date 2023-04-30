@@ -124,7 +124,7 @@ extension ViewController: UITableViewDelegate {
         detailVC.memoSequenceNumber = indexPath.row
         
         // 여기서 할 거는 memos[indexPath.row].memoDetail를 띄어쓰기던 콤마던 구분자마다 다른 줄에 표시 할 수 있게 하는것
-        detailVC.textview.text = "\(memos[indexPath.row].memoTitle)\n\(memos[indexPath.row].memoDetail)"
+        detailVC.textview.text = memos[indexPath.row].entireMemo
         // 여기서 데이터 전달해야함
         //        detailVC.textview =
         // 위와 같은 형태로 하는데, memos[indexPath.row].memoTitle은 첫 줄에 배치되도록 하고, memos[indexPath.row].memoDetail은 두번째 줄 부터 표시되도록 하는데, 띄어쓰기를 구분자로 둬 띄어쓰기마다 줄이 바뀌어 textView에 표현될 수 있도록
