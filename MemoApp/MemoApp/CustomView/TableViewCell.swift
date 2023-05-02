@@ -68,7 +68,7 @@ class TableViewCell: UITableViewCell {
         memodetailLabel.snp.makeConstraints { make in
             make.top.equalTo(memoTitleLabel.snp.bottom).offset(5)
             make.leading.equalTo(memoWriteTimeLabel.snp.trailing).offset(15)
-            make.trailing.equalToSuperview().offset(5).priority(.low)
+            make.trailing.equalToSuperview().offset(5).priority(.low) // trailing이 superview를 뚫고 나온다.
             make.bottom.equalToSuperview().inset(5)
         }
     }
