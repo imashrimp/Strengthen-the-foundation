@@ -14,26 +14,28 @@ class MemoObject: Object {
     @Persisted var memoTitle: String
     @Persisted var memoDetail: String
     @Persisted var entireMemo: String
+    @Persisted var isFixed: String // fixed = 0이면 일반 메모, 1이면 고정된 메모
     
-    convenience init(memoTitle: String, memoDetail: String, entireMemo: String) {
+    convenience init(memoTitle: String, memoDetail: String, entireMemo: String, isFixed: String) {
         self.init()
         self.memoTitle = memoTitle
         self.memoDetail = memoDetail
         self.entireMemo = entireMemo
+        self.isFixed = isFixed
     }
 }
 
-class FixedMemoObject: Object {
-    // primaryKey 만들어야 하나 아닌가?
-    @Persisted var memoDate = Date()
-    @Persisted var memoTitle: String
-    @Persisted var memoDetail: String
-    @Persisted var entireMemo: String
-    
-    convenience init(memoTitle: String, memoDetail: String, entireMemo: String) {
-        self.init()
-        self.memoTitle = memoTitle
-        self.memoDetail = memoDetail
-        self.entireMemo = entireMemo
-    }
-}
+//class FixedMemoObject: Object {
+//    // primaryKey 만들어야 하나 아닌가?
+//    @Persisted var memoDate = Date()
+//    @Persisted var memoTitle: String
+//    @Persisted var memoDetail: String
+//    @Persisted var entireMemo: String
+//    
+//    convenience init(memoTitle: String, memoDetail: String, entireMemo: String) {
+//        self.init()
+//        self.memoTitle = memoTitle
+//        self.memoDetail = memoDetail
+//        self.entireMemo = entireMemo
+//    }
+//}
