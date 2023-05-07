@@ -10,7 +10,7 @@
 import UIKit
 import SnapKit
 
-class TableViewCell: UITableViewCell {
+class MemoListTableViewCell: UITableViewCell {
     
     static let identifier = "TableViewCell"
     

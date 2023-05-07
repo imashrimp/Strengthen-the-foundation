@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1733478B29F6BFC100779574 /* WriteMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1733478A29F6BFC100779574 /* WriteMemoViewController.swift */; };
-		179A976C29F2CC0E00361087 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976B29F2CC0E00361087 /* CustomTableView.swift */; };
-		179A976F29F5005300361087 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976E29F5005300361087 /* TableViewCell.swift */; };
+		179A976F29F5005300361087 /* MemoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A976E29F5005300361087 /* MemoListTableViewCell.swift */; };
 		179A977129F52CA500361087 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179A977029F52CA500361087 /* SectionHeaderView.swift */; };
 		17C6758A29F2563500696B5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6758929F2563500696B5B /* AppDelegate.swift */; };
 		17C6758C29F2563500696B5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6758B29F2563500696B5B /* SceneDelegate.swift */; };
@@ -26,8 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1733478A29F6BFC100779574 /* WriteMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMemoViewController.swift; sourceTree = "<group>"; };
-		179A976B29F2CC0E00361087 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
-		179A976E29F5005300361087 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		179A976E29F5005300361087 /* MemoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewCell.swift; sourceTree = "<group>"; };
 		179A977029F52CA500361087 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		17C6758629F2563500696B5B /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C6758929F2563500696B5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,10 +65,9 @@
 		179A976D29F2CC1E00361087 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				179A976B29F2CC0E00361087 /* CustomTableView.swift */,
 				179A977029F52CA500361087 /* SectionHeaderView.swift */,
 				17C675A229F2860C00696B5B /* AlertViewController.swift */,
-				179A976E29F5005300361087 /* TableViewCell.swift */,
+				179A976E29F5005300361087 /* MemoListTableViewCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -96,7 +93,7 @@
 			children = (
 				1733478C29F6BFD000779574 /* ViewController */,
 				179A976D29F2CC1E00361087 /* CustomView */,
-				17EA501E29FB8D18003739C4 /* MeMoObjec */,
+				17EA501E29FB8D18003739C4 /* MemoObjec */,
 				17C6758929F2563500696B5B /* AppDelegate.swift */,
 				17C6758B29F2563500696B5B /* SceneDelegate.swift */,
 				17C6758F29F2563500696B5B /* Main.storyboard */,
@@ -107,12 +104,12 @@
 			path = MemoApp;
 			sourceTree = "<group>";
 		};
-		17EA501E29FB8D18003739C4 /* MeMoObjec */ = {
+		17EA501E29FB8D18003739C4 /* MemoObjec */ = {
 			isa = PBXGroup;
 			children = (
 				17EA501C29F98908003739C4 /* MemoObject.swift */,
 			);
-			path = MeMoObjec;
+			path = MemoObjec;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +193,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1733478B29F6BFC100779574 /* WriteMemoViewController.swift in Sources */,
-				179A976C29F2CC0E00361087 /* CustomTableView.swift in Sources */,
 				17C6758E29F2563500696B5B /* MemoListViewController.swift in Sources */,
 				17C6758A29F2563500696B5B /* AppDelegate.swift in Sources */,
-				179A976F29F5005300361087 /* TableViewCell.swift in Sources */,
+				179A976F29F5005300361087 /* MemoListTableViewCell.swift in Sources */,
 				179A977129F52CA500361087 /* SectionHeaderView.swift in Sources */,
 				17EA501D29F98908003739C4 /* MemoObject.swift in Sources */,
 				17C6758C29F2563500696B5B /* SceneDelegate.swift in Sources */,
