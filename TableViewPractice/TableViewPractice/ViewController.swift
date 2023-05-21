@@ -47,13 +47,13 @@ extension ViewController {
     
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-        cell.imageview.image = UIImage(systemName: "cloud.bolt")
-        cell.label.text = "view \(indexPath.row)"
+//        cell.imageview.image = UIImage(systemName: "cloud.bolt")
+//        cell.label.text = "view \(indexPath.row)"
         return cell
     }
 
@@ -61,6 +61,10 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("select \(indexPath.row)")
     }
