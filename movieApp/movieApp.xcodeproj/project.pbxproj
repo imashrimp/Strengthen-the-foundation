@@ -17,6 +17,7 @@
 		171A64E52A18EAE500AF239B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 171A64E42A18EAE500AF239B /* Moya */; };
 		171A64E72A18EB4E00AF239B /* MovieAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A64E62A18EB4E00AF239B /* MovieAPIService.swift */; };
 		171A64E92A19E73500AF239B /* BoxOfficeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A64E82A19E73500AF239B /* BoxOfficeResponse.swift */; };
+		171A64EB2A1A5E2700AF239B /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A64EA2A1A5E2700AF239B /* MovieListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		171A64DA2A18E4A400AF239B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		171A64E62A18EB4E00AF239B /* MovieAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPIService.swift; sourceTree = "<group>"; };
 		171A64E82A19E73500AF239B /* BoxOfficeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeResponse.swift; sourceTree = "<group>"; };
+		171A64EA2A1A5E2700AF239B /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				171A64CC2A18E4A300AF239B /* AppDelegate.swift */,
 				171A64CE2A18E4A300AF239B /* SceneDelegate.swift */,
 				171A64D02A18E4A300AF239B /* BoxOfficeViewController.swift */,
+				171A64EA2A1A5E2700AF239B /* MovieListTableViewCell.swift */,
 				171A64E62A18EB4E00AF239B /* MovieAPIService.swift */,
 				171A64E82A19E73500AF239B /* BoxOfficeResponse.swift */,
 				171A64D22A18E4A300AF239B /* Main.storyboard */,
@@ -160,6 +163,7 @@
 				171A64E72A18EB4E00AF239B /* MovieAPIService.swift in Sources */,
 				171A64E92A19E73500AF239B /* BoxOfficeResponse.swift in Sources */,
 				171A64CD2A18E4A300AF239B /* AppDelegate.swift in Sources */,
+				171A64EB2A1A5E2700AF239B /* MovieListTableViewCell.swift in Sources */,
 				171A64CF2A18E4A300AF239B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
