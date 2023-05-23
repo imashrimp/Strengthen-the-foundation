@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Movie
-struct Movie: Codable {
+struct BoxOffice: Codable {
     let boxOfficeResult: BoxOfficeResult
 }
 
