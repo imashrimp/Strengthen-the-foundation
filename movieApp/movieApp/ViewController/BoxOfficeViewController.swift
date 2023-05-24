@@ -15,6 +15,7 @@ import Moya
 
 class BoxOfficeViewController: UIViewController {
 
+    
     /// api 호출 클래스 인스턴스
     var boxOfficeAPINetworking = APINetworking()
     
@@ -31,7 +32,7 @@ class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-    
+
         addSubViews()
         configure()
         makeConstraints()
@@ -80,15 +81,11 @@ extension BoxOfficeViewController: UITableViewDelegate {
         let header = SectionHeaderView()
         return header
     }
-    
 }
 
 extension BoxOfficeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//         boxOfficeAPINetworking.callBoxOfficeAPI { movies in
-//             self.cellCount = movies.boxOfficeResult.dailyBoxOfficeList.count
-//        }
         return 10
     }
     

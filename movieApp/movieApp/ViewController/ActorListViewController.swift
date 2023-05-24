@@ -12,7 +12,7 @@ class ActorListViewController: UIViewController {
     let actorListTableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
-//        tableview.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.identifier)
+        tableview.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.identifier)
         return tableview
     }()
     
@@ -25,11 +25,13 @@ class ActorListViewController: UIViewController {
     }
     
     private func addSubViews() {
-        
+        self.view.addSubview(actorListTableView)
     }
     
     private func makeConstraints() {
-        
+        actorListTableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }
 
