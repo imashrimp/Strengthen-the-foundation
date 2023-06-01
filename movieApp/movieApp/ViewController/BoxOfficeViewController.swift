@@ -15,8 +15,6 @@ import Moya
 
 class BoxOfficeViewController: UIViewController {
 
-    
-    /// api 호출 클래스 인스턴스
     var boxOfficeAPINetworking = APINetworking()
     
     let sectionHeaderView = SectionHeaderView()
@@ -80,7 +78,6 @@ extension BoxOfficeViewController: UITableViewDelegate {
         return 44
     }
     
-    /// 섹션 헤더 나타내는 메서드
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = SectionHeaderView()
         return header

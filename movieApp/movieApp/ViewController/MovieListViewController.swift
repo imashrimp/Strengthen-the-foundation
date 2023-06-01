@@ -11,13 +11,10 @@ import Moya
 
 class MovieListViewController: UIViewController {
     
-    var filteredMovie: MovieList?
-    var searchKeyword: String?
-    var wholeMovieResult: MovieListResult? // 아니면 옵셔널로
+    var searchKeyword: String = ""
+    var wholeMovieResult: MovieListResult?
     var filteredMovieList: [MovieListElement] = []
-    
     let movieListAPINetworking = APINetworking()
-    var movieCount: Int?
     
     let searchBar: UISearchController = UISearchController(searchResultsController: nil)
     let searchButtonView: UIView = SearchButtonView()
@@ -69,9 +66,6 @@ extension MovieListViewController {
     
     private func setSearchBar() {
         searchBar.searchBar.placeholder = "영화 제목을 입력하세요."
-//        searchBar.searchBar.setShowsCancelButton(false, animated: false)
-//        searchBar.searchBar.searchTextField.rightView = searchButtonView
-//        searchBar.searchBar.searchTextField.rightViewMode = .always
         searchBar.automaticallyShowsCancelButton = false
         searchBar.obscuresBackgroundDuringPresentation = false
         searchBar.searchResultsUpdater = self
@@ -81,10 +75,11 @@ extension MovieListViewController {
 //MARK: - api 호출 후 데이터를 프로퍼티에 저장하는 메서드 작성 익스텐션
 extension MovieListViewController {
     
+    /// "검색" 버튼에 등록할 메서드
     @objc func searchButtonTapped() {
         print("검색 버튼이 눌러졌을 때 검색어는 \(searchKeyword)입니다.")
        filteredMovieList = wholeMovieResult?.movieList.filter {
-            $0.movieNm.contains(searchKeyword ?? "")
+           $0.movieNm.contains(searchKeyword)
        } ?? []
         print("버튼이 눌러질 때 걸러진 영화 목록: \(filteredMovieList)")
         movieListTableView.reloadData()
@@ -99,7 +94,7 @@ extension MovieListViewController {
 
 extension MovieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        searchKeyword = searchController.searchBar.text
+        searchKeyword = searchController.searchBar.text ?? ""
         print(searchKeyword)
     }
 }
