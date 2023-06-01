@@ -20,5 +20,5 @@ struct PeopleListResult: Codable {
 
 // MARK: - PeopleList
 struct PeopleList: Codable {
-    let peopleNm, peopleNmEn, repRoleNm, filmoNames: String
+    let peopleNm, peopleNmEn, filmoNames: String
 }

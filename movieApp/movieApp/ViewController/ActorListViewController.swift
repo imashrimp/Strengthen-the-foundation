@@ -8,6 +8,14 @@
 import UIKit
 
 class ActorListViewController: UIViewController {
+    
+    var wholeActorResult: PeopleListResult?
+    var filteredActorList: [PeopleList] = []
+    var searchKeyword: String = ""
+    
+    let actorListAPINetworking = APINetworking()
+    
+    let searchBar = UISearchController(searchResultsController: nil)
 
     let actorListTableView: UITableView = {
         let tableview = UITableView()
@@ -20,12 +28,24 @@ class ActorListViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         actorListTableView.delegate = self
-//        actorListTableView.dataSource = self
+        actorListTableView.dataSource = self
+        
+        addSubViews()
+        configure()
+        makeConstraints()
+        
+        callAPI()
         
     }
     
     private func addSubViews() {
         self.view.addSubview(actorListTableView)
+    }
+    
+    private func configure() {
+        self.view.backgroundColor = .white
+        setNavBar()
+        setSearchBar()
     }
     
     private func makeConstraints() {
@@ -35,16 +55,64 @@ class ActorListViewController: UIViewController {
     }
 }
 
+//MARK: - 네비게이션바 익스텐션
+extension ActorListViewController {
+    private func setNavBar() {
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationItem.title = "영화 목록"
+        self.navigationItem.searchController = searchBar
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+    }
+}
+
+//MARK: - 서치바 익스텐션
+extension ActorListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        searchKeyword = searchController.searchBar.text ?? ""
+        print("검색어는 \(searchKeyword)입니다.")
+        filteredActorList = wholeActorResult?.peopleList.filter {
+            $0.peopleNm.contains(searchKeyword )
+        } ?? []
+        print("검색된 배우 목록은 \(filteredActorList)입니다")
+        self.actorListTableView.reloadData()
+    }
+    
+    private func setSearchBar() {
+        searchBar.searchBar.placeholder = "배우 이름을 검색하세요"
+        searchBar.searchResultsUpdater = self
+    }
+}
+
+//MARK: - api 호출 익스텐션
+extension ActorListViewController {
+    private func callAPI() {
+        actorListAPINetworking.callActorListAPI { actors in
+            self.wholeActorResult = actors.peopleListResult
+        }
+    }
+}
+
+//MARK: - 테이블 뷰 익스텐션
 extension ActorListViewController: UITableViewDelegate {
     
 }
 
-//extension ActorListViewController: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//}
+extension ActorListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("검색된 배우는 \(filteredActorList.count)명 입니다.")
+        return filteredActorList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActorListTableViewCell", for: indexPath) as! ActorListTableViewCell
+        
+        DispatchQueue.main.async {
+            cell.actorNameKrLabel.text = self.filteredActorList[indexPath.row].peopleNm
+            cell.actorNameEnLabel.text = self.filteredActorList[indexPath.row].peopleNmEn
+            cell.filmographyLabel.text = self.filteredActorList[indexPath.row].filmoNames
+        }
+        
+        return cell
+    }
+}

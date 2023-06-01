@@ -50,7 +50,7 @@ extension BoxOfficeAPI: TargetType {
         case .movieList:
             return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a"], encoding: URLEncoding.default)
         case .actorList:
-            return .requestParameters(parameters: ["key" : "84de47cdcc040f810cd24c330b8d8a9a"], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100"], encoding: URLEncoding.default)
         }
     }
     

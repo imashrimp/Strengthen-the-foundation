@@ -5,9 +5,6 @@
 //  Created by 권현석 on 2023/05/22.
 //
 
-//TODO: 1. 테이블 뷰 넣기, 테이블뷰 셀 만들기
-// 서치바 텍스트를 입력하면 그에 따른 api호출이 되어서 호출된 데이터가 셀에 표시되도록
-
 import UIKit
 import SnapKit
 import Moya
@@ -16,12 +13,14 @@ class MovieListViewController: UIViewController {
     
     var filteredMovie: MovieList?
     var searchKeyword: String?
-    var movieListCollection: [MovieListElement] = [] // 아니면 옵셔널로
+    var wholeMovieResult: MovieListResult? // 아니면 옵셔널로
+    var filteredMovieList: [MovieListElement] = []
     
     let movieListAPINetworking = APINetworking()
     var movieCount: Int?
     
     let searchBar: UISearchController = UISearchController(searchResultsController: nil)
+    let searchButtonView: UIView = SearchButtonView()
     let movieListTableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
@@ -31,25 +30,19 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieListTableView.dataSource = self
+        movieListTableView.delegate = self
+        
         addSubViews()
         configure()
         makeConstraints()
         
-        movieListTableView.dataSource = self
-        movieListTableView.delegate = self
-        
-        movieListAPINetworking.callMovieListAPI { movie in
-            self.movieCount = movie.movieListResult.movieList.count
-        }
+        saveAPIData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
+
     private func addSubViews() {
         self.view.addSubview(movieListTableView)
+        self.view.addSubview(searchButtonView)
     }
     
     private func configure() {
@@ -76,8 +69,10 @@ extension MovieListViewController {
     
     private func setSearchBar() {
         searchBar.searchBar.placeholder = "영화 제목을 입력하세요."
-        searchBar.searchBar.setValue("취소", forKey: "cancelButtonText")
-        searchBar.automaticallyShowsCancelButton = true
+//        searchBar.searchBar.setShowsCancelButton(false, animated: false)
+//        searchBar.searchBar.searchTextField.rightView = searchButtonView
+//        searchBar.searchBar.searchTextField.rightViewMode = .always
+        searchBar.automaticallyShowsCancelButton = false
         searchBar.obscuresBackgroundDuringPresentation = false
         searchBar.searchResultsUpdater = self
     }
@@ -86,9 +81,18 @@ extension MovieListViewController {
 //MARK: - api 호출 후 데이터를 프로퍼티에 저장하는 메서드 작성 익스텐션
 extension MovieListViewController {
     
+    @objc func searchButtonTapped() {
+        print("검색 버튼이 눌러졌을 때 검색어는 \(searchKeyword)입니다.")
+       filteredMovieList = wholeMovieResult?.movieList.filter {
+            $0.movieNm.contains(searchKeyword ?? "")
+       } ?? []
+        print("버튼이 눌러질 때 걸러진 영화 목록: \(filteredMovieList)")
+        movieListTableView.reloadData()
+    }
+    
     private func saveAPIData() {
         movieListAPINetworking.callMovieListAPI { movie in
-            self.movieListCollection = movie.movieListResult.movieList
+            self.wholeMovieResult = movie.movieListResult
         }
     }
 }
@@ -96,15 +100,7 @@ extension MovieListViewController {
 extension MovieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchKeyword = searchController.searchBar.text
-        dump(movieListCollection)
-        let condition: ((String, String)) -> Bool = {
-            $0.0.contains(self.searchKeyword ?? "")
-        }
-        
-        
-        
-//        print("서치바에 입련된 텍스트는 \(searchKeyword)입니다.")
-//        print("서치바에서 movieCount의 값은 \(movieCount)입니다.")
+        print(searchKeyword)
     }
 }
 
@@ -115,28 +111,20 @@ extension MovieListViewController: UITableViewDelegate {
 
 extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        movieListAPINetworking.callMovieListAPI { movie in
-//            self.movieCount = movie.movieListResult.movieList.count
-//            print("클로저 내부에서의 값: \(self.movieCount)")
-//        }
-//        print("클로저 밖에서의 값: \(movieCount)")
-        return 1
+        
+        return filteredMovieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableViewCell", for: indexPath) as! MovieListTableViewCell
         
-        movieListAPINetworking.callMovieListAPI { movie in
-            cell.krMovieTitleLabel.text = movie.movieListResult.movieList[indexPath.row].movieNm
-//            self.movieCount = movie.movieListResult.movieList.count
-            print(movie.movieListResult.movieList[indexPath.row].movieNm)
-//            print("TEST1: \(self.movieCount)")
+        DispatchQueue.main.async {
+            cell.krMovieTitleLabel.text = self.filteredMovieList[indexPath.row].movieNm
+            cell.enMovieTitleLabel.text = self.filteredMovieList[indexPath.row].movieNmEn
+            cell.genreLabel.text = self.filteredMovieList[indexPath.row].repGenreNm
+            cell.directorNameLabel.text = self.filteredMovieList[indexPath.row].directors[0].peopleNm
+            cell.releaseDateLabel.text = self.filteredMovieList[indexPath.row].openDt
         }
-//        print("TEST2: \(movieCount)")
         return cell
     }
 }
-
-// 1. 첫 번째로 서치바에 입력된 텍스트를 가져온다. => 해당 스트링 값을 저장할 저장소 필요
-// 2. 입력된 텍스트를 사용해 api 호출된 데이터를 필터링한다. => 검색어 저장소를 사용해 필터링된 데이터를 저장할 저장소 필요
-// 3. 필터링 된 데이터를 사용해 셀 갯수 표시와 셀의 형태를 나타낸다. => 필터링된 데이터 사용해 나타낼 셀의 갯수와 셀 형태 나타내기

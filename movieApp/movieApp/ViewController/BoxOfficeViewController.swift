@@ -76,6 +76,10 @@ class BoxOfficeViewController: UIViewController {
 
 extension BoxOfficeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
     /// 섹션 헤더 나타내는 메서드
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = SectionHeaderView()

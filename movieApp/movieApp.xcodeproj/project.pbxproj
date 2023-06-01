@@ -26,6 +26,7 @@
 		17B32FF52A1C83B0001CE476 /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FF42A1C83B0001CE476 /* BoxOfficeTableViewCell.swift */; };
 		17B32FF72A1C83D4001CE476 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FF62A1C83D4001CE476 /* MovieListTableViewCell.swift */; };
 		17B32FF92A1C83DD001CE476 /* ActorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FF82A1C83DD001CE476 /* ActorListTableViewCell.swift */; };
+		17B32FFD2A2860AB001CE476 /* SearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FFC2A2860AB001CE476 /* SearchButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		17B32FF42A1C83B0001CE476 /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		17B32FF62A1C83D4001CE476 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		17B32FF82A1C83DD001CE476 /* ActorListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListTableViewCell.swift; sourceTree = "<group>"; };
+		17B32FFC2A2860AB001CE476 /* SearchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				171A64EE2A1B646E00AF239B /* SectionHeaderView.swift */,
+				17B32FFC2A2860AB001CE476 /* SearchButtonView.swift */,
 				17B32FF42A1C83B0001CE476 /* BoxOfficeTableViewCell.swift */,
 				17B32FF62A1C83D4001CE476 /* MovieListTableViewCell.swift */,
 				17B32FF82A1C83DD001CE476 /* ActorListTableViewCell.swift */,
@@ -214,6 +217,7 @@
 				171A64E92A19E73500AF239B /* BoxOfficeResponse.swift in Sources */,
 				17B32FF12A1C7CCB001CE476 /* MovieListResponse.swift in Sources */,
 				171A64CD2A18E4A300AF239B /* AppDelegate.swift in Sources */,
+				17B32FFD2A2860AB001CE476 /* SearchButtonView.swift in Sources */,
 				17B32FF92A1C83DD001CE476 /* ActorListTableViewCell.swift in Sources */,
 				171A64F12A1BAF0800AF239B /* MovieListViewController.swift in Sources */,
 				17B32FF72A1C83D4001CE476 /* MovieListTableViewCell.swift in Sources */,
