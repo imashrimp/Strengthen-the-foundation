@@ -5,10 +5,6 @@
 //  Created by 권현석 on 2023/05/20.
 //
 
-//TODO: 버튼 커스텀뷰랑 테이블뷰 레이아웃 해결
-// api 호출 데이터 클로저 밖으로 가져오는거 해결
-// 새로운 api 호출(영화 api, 배우 api)
-
 import UIKit
 import SnapKit
 import Moya
@@ -16,6 +12,7 @@ import Moya
 class BoxOfficeViewController: UIViewController {
 
     var boxOfficeAPINetworking = APINetworking()
+    var boxOfficeViewModel = BoxOfficeViewModel()
     
     let sectionHeaderView = SectionHeaderView()
     let movieListTableView: UITableView = {
@@ -30,7 +27,9 @@ class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        
+        boxOfficeViewModel.delegate = self
+        
         addSubViews()
         configure()
         makeConstraints()
@@ -70,6 +69,20 @@ class BoxOfficeViewController: UIViewController {
             make.height.equalTo(50)
         }
     }
+}
+
+//MARK: - 델리게이트 활용 익스텐션
+extension BoxOfficeViewController: BoxOfficeRankProtocol {
+    var boxOfficeRankData: [DailyBoxOfficeList] {
+        get {
+            <#code#>
+        }
+        set {
+            <#code#>
+        }
+    }
+    
+    
 }
 
 extension BoxOfficeViewController: UITableViewDelegate {

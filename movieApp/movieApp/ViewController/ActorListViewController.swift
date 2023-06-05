@@ -20,7 +20,7 @@ class ActorListViewController: UIViewController {
     let actorListTableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
-        tableview.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.identifier)
+        tableview.register(ActorListTableViewCell.self, forCellReuseIdentifier: ActorListTableViewCell.identifier)
         return tableview
     }()
     
@@ -35,7 +35,6 @@ class ActorListViewController: UIViewController {
         makeConstraints()
         
         callAPI()
-        
     }
     
     private func addSubViews() {
@@ -59,7 +58,8 @@ class ActorListViewController: UIViewController {
 extension ActorListViewController {
     private func setNavBar() {
         self.navigationController?.navigationBar.tintColor = .black
-        self.navigationItem.title = "영화 목록"
+        self.navigationItem.title = "배우 목록"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.searchController = searchBar
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -70,16 +70,16 @@ extension ActorListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         searchKeyword = searchController.searchBar.text ?? ""
-        print("검색어는 \(searchKeyword)입니다.")
         filteredActorList = wholeActorResult?.peopleList.filter {
             $0.peopleNm.contains(searchKeyword )
         } ?? []
-        print("검색된 배우 목록은 \(filteredActorList)입니다")
         self.actorListTableView.reloadData()
     }
     
     private func setSearchBar() {
         searchBar.searchBar.placeholder = "배우 이름을 검색하세요"
+        searchBar.automaticallyShowsCancelButton = true
+        searchBar.searchBar.setValue("취소", forKey: "cancelButtonText")
         searchBar.searchResultsUpdater = self
     }
 }
@@ -95,7 +95,9 @@ extension ActorListViewController {
 
 //MARK: - 테이블 뷰 익스텐션
 extension ActorListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }
 
 extension ActorListViewController: UITableViewDataSource {

@@ -10,11 +10,7 @@ import Moya
 
 enum BoxOfficeAPI {
     case dailyBoxOffice(date: String)
-    // 영화 제목을 한글 또는 영어로 검색했을 때 그 글자가 포함된 항목이 테이블 뷰에 나타나야함
-    // 즉 아래의 케이스는 매개변수를 가져야하며, 해당 매개변수의 전달인자는 서치바를 통해 그 값을 받아올것임
     case movieList
-    // 배우 이름을 한글 또는 영어로 검색했을 때 그 글자가 포함된 항목이 테이블 뷰에 나타나야함
-    // 즉 아래의 케이스는 매개변수를 가져야하며, 해당 매개변수의 전달인자는 서치바를 통해 그 값을 받아올것임
     case actorList
 }
 
@@ -48,7 +44,7 @@ extension BoxOfficeAPI: TargetType {
         case .dailyBoxOffice(let date):
             return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "targetDt": date], encoding: URLEncoding.default)
         case .movieList:
-            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a"], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100"], encoding: URLEncoding.default)
         case .actorList:
             return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100"], encoding: URLEncoding.default)
         }

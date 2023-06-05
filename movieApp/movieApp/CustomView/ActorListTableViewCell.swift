@@ -29,13 +29,16 @@ class ActorListTableViewCell: UITableViewCell {
     let filmographyLabel: UILabel = {
        let label = UILabel()
         label.text = "필모그래피"
+        label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        addSubViews()
+        configure()
+        makeConstrints()
     }
     
     private func addSubViews() {
@@ -58,8 +61,10 @@ class ActorListTableViewCell: UITableViewCell {
             make.leading.bottom.equalToSuperview().inset(5)
         }
         
+        
         filmographyLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
+            make.leading.equalTo(actorNameKrLabel.snp.trailing).offset(20)
             make.trailing.equalToSuperview().inset(5)
         }
     }

@@ -39,7 +39,6 @@ class MovieListViewController: UIViewController {
 
     private func addSubViews() {
         self.view.addSubview(movieListTableView)
-        self.view.addSubview(searchButtonView)
     }
     
     private func configure() {
@@ -59,31 +58,33 @@ extension MovieListViewController {
     private func setNavBar() {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.title = "영화 목록"
         self.navigationItem.searchController = searchBar
         setSearchBar()
     }
     
     private func setSearchBar() {
-        searchBar.searchBar.placeholder = "영화 제목을 입력하세요."
-        searchBar.automaticallyShowsCancelButton = false
         searchBar.obscuresBackgroundDuringPresentation = false
         searchBar.searchResultsUpdater = self
+        searchBar.automaticallyShowsCancelButton = true
+        searchBar.searchBar.setValue("취소", forKey: "cancelButtonText")
+        searchBar.searchBar.placeholder = "영화 제목을 입력하세요."
     }
 }
 
 //MARK: - api 호출 후 데이터를 프로퍼티에 저장하는 메서드 작성 익스텐션
 extension MovieListViewController {
     
-    /// "검색" 버튼에 등록할 메서드
-    @objc func searchButtonTapped() {
-        print("검색 버튼이 눌러졌을 때 검색어는 \(searchKeyword)입니다.")
-       filteredMovieList = wholeMovieResult?.movieList.filter {
-           $0.movieNm.contains(searchKeyword)
-       } ?? []
-        print("버튼이 눌러질 때 걸러진 영화 목록: \(filteredMovieList)")
-        movieListTableView.reloadData()
-    }
+//    /// "검색" 버튼에 등록할 메서드
+//    @objc func searchButtonTapped() {
+//        print("검색 버튼이 눌러졌을 때 검색어는 \(searchKeyword)입니다.")
+//       filteredMovieList = wholeMovieResult?.movieList.filter {
+//           $0.movieNm.contains(searchKeyword)
+//       } ?? []
+//        print("버튼이 눌러질 때 걸러진 영화 목록: \(filteredMovieList)")
+//        movieListTableView.reloadData()
+//    }
     
     private func saveAPIData() {
         movieListAPINetworking.callMovieListAPI { movie in
@@ -96,6 +97,10 @@ extension MovieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         searchKeyword = searchController.searchBar.text ?? ""
         print(searchKeyword)
+        filteredMovieList = wholeMovieResult?.movieList.filter {
+            $0.movieNm.contains(searchKeyword)
+        } ?? []
+        movieListTableView.reloadData()
     }
 }
 
@@ -117,7 +122,7 @@ extension MovieListViewController: UITableViewDataSource {
             cell.krMovieTitleLabel.text = self.filteredMovieList[indexPath.row].movieNm
             cell.enMovieTitleLabel.text = self.filteredMovieList[indexPath.row].movieNmEn
             cell.genreLabel.text = self.filteredMovieList[indexPath.row].repGenreNm
-            cell.directorNameLabel.text = self.filteredMovieList[indexPath.row].directors[0].peopleNm
+//            cell.directorNameLabel.text = self.filteredMovieList[indexPath.row].directors[0].peopleNm
             cell.releaseDateLabel.text = self.filteredMovieList[indexPath.row].openDt
         }
         return cell
