@@ -32,9 +32,9 @@ class APINetworking {
     }
     
     /// 영화 목록 api 호출 메서드
-    func callMovieListAPI(completion: @escaping (MovieList) -> Void) {
+    func callMovieListAPI(keyword: String, completion: @escaping (MovieList) -> Void) {
         
-        provider.request(.movieList) { result in
+        provider.request(.movieList(movieTitle: keyword)) { result in
             switch result {
             case let .success(response):
                 guard let result = try? response.map(MovieList.self) else { return }
@@ -46,9 +46,9 @@ class APINetworking {
     }
     
     /// 영화 배우 api 호출 메서드
-    func callActorListAPI(comletion: @escaping (ActorList) -> Void) {
+    func callActorListAPI(keyword: String, comletion: @escaping (ActorList) -> Void) {
         
-        provider.request(.actorList) { result in
+        provider.request(.actorList(actorName: keyword)) { result in
             switch result {
             case let .success(response):
                 guard let result = try? response.map(ActorList.self) else { return }

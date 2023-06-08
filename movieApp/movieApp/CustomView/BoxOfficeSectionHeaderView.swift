@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SectionHeaderView: UIView {
+class BoxOfficeSectionHeaderView: UIView {
     
     let rankHeaderLabel: UILabel = {
         let label = UILabel()

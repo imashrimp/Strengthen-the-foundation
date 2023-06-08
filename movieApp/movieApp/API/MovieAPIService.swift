@@ -10,8 +10,8 @@ import Moya
 
 enum BoxOfficeAPI {
     case dailyBoxOffice(date: String)
-    case movieList
-    case actorList
+    case movieList(movieTitle: String)
+    case actorList(actorName: String)
 }
 
 extension BoxOfficeAPI: TargetType {
@@ -43,10 +43,10 @@ extension BoxOfficeAPI: TargetType {
         switch self {
         case .dailyBoxOffice(let date):
             return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "targetDt": date], encoding: URLEncoding.default)
-        case .movieList:
-            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100"], encoding: URLEncoding.default)
-        case .actorList:
-            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100"], encoding: URLEncoding.default)
+        case .movieList(let movieTitle):
+            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100", "movieNm": movieTitle], encoding: URLEncoding.default)
+        case .actorList(let actorName):
+            return .requestParameters(parameters: ["key": "84de47cdcc040f810cd24c330b8d8a9a", "itemPerPage": "100", "peopleNm": actorName], encoding: URLEncoding.default)
         }
     }
     

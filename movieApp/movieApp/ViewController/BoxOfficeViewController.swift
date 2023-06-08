@@ -14,8 +14,8 @@ class BoxOfficeViewController: UIViewController {
     var boxOfficeAPINetworking = APINetworking()
     var boxOfficeViewModel = BoxOfficeViewModel()
     
-    let sectionHeaderView = SectionHeaderView()
-    let movieListTableView: UITableView = {
+    let sectionHeaderView = BoxOfficeSectionHeaderView()
+    let boxOfficeTableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
         tableview.register(BoxOfficeTableViewCell.self, forCellReuseIdentifier: BoxOfficeTableViewCell.identifier)
@@ -29,33 +29,33 @@ class BoxOfficeViewController: UIViewController {
         view.backgroundColor = .white
         
         boxOfficeViewModel.delegate = self
-        
+
         addSubViews()
         configure()
         makeConstraints()
     }
     
     private func addSubViews() {
-        [sectionHeaderView, movieListTableView, searchMovieButton, searchActorButton].forEach {
+        [sectionHeaderView, boxOfficeTableView, searchMovieButton, searchActorButton].forEach {
             self.view.addSubview($0)
         }
     }
     
     private func configure() {
-        movieListTableView.dataSource = self
-        movieListTableView.delegate = self
+        boxOfficeTableView.dataSource = self
+        boxOfficeTableView.delegate = self
         buttonConfigure()
         setNavigationTitle()
     }
     
     private func makeConstraints() {
-        movieListTableView.snp.makeConstraints { make in
+        boxOfficeTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().offset(5)
         }
         
         searchMovieButton.snp.makeConstraints { make in
-            make.top.equalTo(movieListTableView.snp.bottom).offset(30)
+            make.top.equalTo(boxOfficeTableView.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
             make.width.equalTo(100)
             make.height.equalTo(50)
@@ -73,16 +73,11 @@ class BoxOfficeViewController: UIViewController {
 
 //MARK: - 델리게이트 활용 익스텐션
 extension BoxOfficeViewController: BoxOfficeRankProtocol {
-    var boxOfficeRankData: [DailyBoxOfficeList] {
-        get {
-            <#code#>
-        }
-        set {
-            <#code#>
+    func saveBoxOfficeRank() {
+        if boxOfficeViewModel.boxOfficeRankData.isEmpty == false {
+            self.boxOfficeTableView.reloadData()
         }
     }
-    
-    
 }
 
 extension BoxOfficeViewController: UITableViewDelegate {
@@ -92,7 +87,7 @@ extension BoxOfficeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = SectionHeaderView()
+        let header = BoxOfficeSectionHeaderView()
         return header
     }
 }
@@ -100,19 +95,17 @@ extension BoxOfficeViewController: UITableViewDelegate {
 extension BoxOfficeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return boxOfficeViewModel.boxOfficeRankData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BoxOfficeTableViewCell", for: indexPath) as! BoxOfficeTableViewCell
         
-        boxOfficeAPINetworking.callBoxOfficeAPI { movies in
-            DispatchQueue.main.async {
-                cell.movieRankLabel.text = movies.boxOfficeResult.dailyBoxOfficeList[indexPath.row].rank
-                cell.movieTitleLabel.text = movies.boxOfficeResult.dailyBoxOfficeList[indexPath.row].movieNm
-                cell.audienceNumberLabel.text = "\(movies.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiAcc)명"
-            }
+        DispatchQueue.main.async {
+            cell.movieRankLabel.text = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row].rank
+            cell.movieTitleLabel.text = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row].movieNm
+            cell.audienceNumberLabel.text = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row].audiAcc
         }
         return cell
     }
@@ -136,9 +129,7 @@ extension BoxOfficeViewController {
     }
     
     private func setNavigationTitle() {
-        boxOfficeAPINetworking.callBoxOfficeAPI { movies in
-            self.navigationItem.title = movies.boxOfficeResult.boxofficeType
-        }
+        self.navigationItem.title = "일간 박스오피스"
     }
     
     @objc func pushToMovieListVC() {

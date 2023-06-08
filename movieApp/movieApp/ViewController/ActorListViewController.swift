@@ -9,14 +9,9 @@ import UIKit
 
 class ActorListViewController: UIViewController {
     
-    var wholeActorResult: PeopleListResult?
-    var filteredActorList: [PeopleList] = []
-    var searchKeyword: String = ""
-    
-    let actorListAPINetworking = APINetworking()
+    let viewModel = ActorListViewModel()
     
     let searchBar = UISearchController(searchResultsController: nil)
-
     let actorListTableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
@@ -33,8 +28,6 @@ class ActorListViewController: UIViewController {
         addSubViews()
         configure()
         makeConstraints()
-        
-        callAPI()
     }
     
     private func addSubViews() {
@@ -69,11 +62,10 @@ extension ActorListViewController {
 extension ActorListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        searchKeyword = searchController.searchBar.text ?? ""
-        filteredActorList = wholeActorResult?.peopleList.filter {
-            $0.peopleNm.contains(searchKeyword )
-        } ?? []
-        self.actorListTableView.reloadData()
+        viewModel.searchKeyword = searchController.searchBar.text ?? ""
+        viewModel.actorAPICall {
+            self.actorListTableView.reloadData()
+        }
     }
     
     private func setSearchBar() {
@@ -84,36 +76,23 @@ extension ActorListViewController: UISearchResultsUpdating {
     }
 }
 
-//MARK: - api 호출 익스텐션
-extension ActorListViewController {
-    private func callAPI() {
-        actorListAPINetworking.callActorListAPI { actors in
-            self.wholeActorResult = actors.peopleListResult
-        }
-    }
-}
-
 //MARK: - 테이블 뷰 익스텐션
 extension ActorListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
 }
 
 extension ActorListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("검색된 배우는 \(filteredActorList.count)명 입니다.")
-        return filteredActorList.count
+        return viewModel.filteredActorList.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActorListTableViewCell", for: indexPath) as! ActorListTableViewCell
         
-        DispatchQueue.main.async {
-            cell.actorNameKrLabel.text = self.filteredActorList[indexPath.row].peopleNm
-            cell.actorNameEnLabel.text = self.filteredActorList[indexPath.row].peopleNmEn
-            cell.filmographyLabel.text = self.filteredActorList[indexPath.row].filmoNames
-        }
+        let item = self.viewModel.filteredActorList[indexPath.row]
+        
+        cell.actorNameKrLabel.text = item.peopleNm
+        cell.actorNameEnLabel.text = item.peopleNmEn
+        cell.filmographyLabel.text = item.filmoNames
         
         return cell
     }

@@ -12,17 +12,23 @@ class ActorListTableViewCell: UITableViewCell {
     
     static let identifier = "ActorListTableViewCell"
     
+    let nameView: UIView = UIView()
+    let filmoView: UIView = UIView()
+    
     let actorNameKrLabel: UILabel = {
        let label = UILabel()
         label.text = "배우 이름"
-        label.textAlignment = .left
+        label.textAlignment = .center
         return label
     }()
     
     let actorNameEnLabel: UILabel = {
        let label = UILabel()
         label.text = "actor's name"
-        label.textAlignment = .left
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 1
+        label.minimumScaleFactor = 0.3
         return label
     }()
     
@@ -31,6 +37,7 @@ class ActorListTableViewCell: UITableViewCell {
         label.text = "필모그래피"
         label.numberOfLines = 0
         label.textAlignment = .left
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
@@ -42,7 +49,15 @@ class ActorListTableViewCell: UITableViewCell {
     }
     
     private func addSubViews() {
-        [actorNameKrLabel, actorNameEnLabel, filmographyLabel].forEach {
+        [actorNameKrLabel, actorNameEnLabel].forEach {
+            nameView.addSubview($0)
+        }
+        
+        [filmographyLabel].forEach {
+            filmoView.addSubview($0)
+        }
+        
+        [nameView, filmoView].forEach {
             contentView.addSubview($0)
         }
     }
@@ -52,20 +67,30 @@ class ActorListTableViewCell: UITableViewCell {
     }
     
     private func makeConstrints() {
+        nameView.snp.makeConstraints { make in
+            make.leading.top.bottom.equalToSuperview()
+            make.width.equalTo(100)
+        }
+        
         actorNameKrLabel.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().inset(5)
+            make.top.lessThanOrEqualToSuperview()
+            make.leading.trailing.equalToSuperview().inset(5)
+            
         }
         
         actorNameEnLabel.snp.makeConstraints { make in
             make.top.equalTo(actorNameKrLabel.snp.bottom).offset(2)
-            make.leading.bottom.equalToSuperview().inset(5)
+            make.leading.bottom.trailing.equalToSuperview().inset(5)
         }
         
+        filmoView.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalToSuperview()
+            make.leading.equalTo(nameView.snp.trailing).offset(20)
+        }
         
         filmographyLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(actorNameKrLabel.snp.trailing).offset(20)
-            make.trailing.equalToSuperview().inset(5)
+            make.top.bottom.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
     }
     

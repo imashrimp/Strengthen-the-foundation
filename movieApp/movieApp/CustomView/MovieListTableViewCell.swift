@@ -12,6 +12,8 @@ class MovieListTableViewCell: UITableViewCell {
     
     static let identifier = "MovieListTableViewCell"
     
+    let movieTitleView: UIView = UIView()
+    
     let krMovieTitleLabel: UILabel = {
        let label = UILabel()
         label.text = "영화 제목"
@@ -32,13 +34,7 @@ class MovieListTableViewCell: UITableViewCell {
         label.textAlignment = .center
         return label
     }()
-    
-    let directorNameLabel: UILabel = {
-       let label = UILabel()
-        label.text = "감독 이름"
-        label.textAlignment = .center
-        return label
-    }()
+
     
     let releaseDateLabel: UILabel = {
        let label = UILabel()
@@ -55,7 +51,11 @@ class MovieListTableViewCell: UITableViewCell {
     }
     
     private func addSubViews() {
-        [krMovieTitleLabel, enMovieTitleLabel, genreLabel, directorNameLabel, releaseDateLabel].forEach {
+        [krMovieTitleLabel, enMovieTitleLabel].forEach {
+            movieTitleView.addSubview($0)
+        }
+        
+        [movieTitleView, genreLabel, releaseDateLabel].forEach {
             contentView.addSubview($0)
         }
     }
@@ -66,23 +66,23 @@ class MovieListTableViewCell: UITableViewCell {
     
     private func makeConstraints() {
         
+        movieTitleView.snp.makeConstraints { make in
+            make.leading.top.bottom.equalToSuperview()
+            make.width.equalTo(150)
+        }
+        
         krMovieTitleLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(5)
+            make.top.leading.trailing.equalToSuperview().inset(5)
         }
         
         enMovieTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(krMovieTitleLabel.snp.bottom).offset(2)
-            make.leading.bottom.equalToSuperview().inset(5)
+            make.leading.bottom.trailing.equalToSuperview().inset(5)
         }
         
         genreLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(krMovieTitleLabel.snp.trailing).offset(5)
-        }
-        
-        directorNameLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(genreLabel.snp.trailing).offset(5)
+            make.leading.equalTo(movieTitleView.snp.trailing).offset(15)
         }
         
         releaseDateLabel.snp.makeConstraints { make in
