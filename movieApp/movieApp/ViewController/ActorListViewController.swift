@@ -78,6 +78,10 @@ extension ActorListViewController: UISearchResultsUpdating {
 
 //MARK: - 테이블 뷰 익스텐션
 extension ActorListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ActorListSectionHeaderView()
+        return header
+    }
 }
 
 extension ActorListViewController: UITableViewDataSource {

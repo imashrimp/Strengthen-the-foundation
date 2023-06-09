@@ -12,7 +12,7 @@ protocol BoxOfficeRankProtocol: AnyObject {
 }
 
 class BoxOfficeViewModel {
-
+    
     weak var delegate: BoxOfficeRankProtocol?
     
     var boxOfficeAPINetworking = APINetworking()

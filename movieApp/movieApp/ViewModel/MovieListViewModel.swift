@@ -8,9 +8,10 @@
 import Foundation
 
 class MovieListViewModel {
+    
+    let movieListAPINetworking = APINetworking()
     var searchKeyword: String = ""
     var filteredMovieList: [MovieListElement] = []
-    let movieListAPINetworking = APINetworking()
     
     func movieListAPICall(completion: @escaping () -> Void) {
         movieListAPINetworking.callMovieListAPI(keyword: searchKeyword) { movie in

@@ -16,28 +16,28 @@ class ActorListTableViewCell: UITableViewCell {
     let filmoView: UIView = UIView()
     
     let actorNameKrLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "배우 이름"
         label.textAlignment = .center
         return label
     }()
     
     let actorNameEnLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "actor's name"
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.minimumScaleFactor = 0.3
         return label
     }()
     
     let filmographyLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "필모그래피"
         label.numberOfLines = 0
         label.textAlignment = .left
-        label.lineBreakMode = .byCharWrapping
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     

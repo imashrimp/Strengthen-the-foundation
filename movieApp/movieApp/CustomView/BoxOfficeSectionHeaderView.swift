@@ -14,7 +14,6 @@ class BoxOfficeSectionHeaderView: UIView {
         let label = UILabel()
         label.text = "순위"
         label.font = .systemFont(ofSize: 15, weight: .bold)
-        
         return label
     }()
     

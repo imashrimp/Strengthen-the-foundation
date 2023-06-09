@@ -13,7 +13,7 @@ class APINetworking {
     var provider = MoyaProvider<BoxOfficeAPI>()
     let date = Date()
     let dateFormatter = DateFormatter()
-
+    
     /// 박스오피스 api호출 메서드
     func callBoxOfficeAPI(completion: @escaping (BoxOffice) -> Void) {
         let yesterdayByDate = Calendar.current.date(byAdding: .day, value: -1, to: date)

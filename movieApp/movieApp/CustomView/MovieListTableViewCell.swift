@@ -15,34 +15,36 @@ class MovieListTableViewCell: UITableViewCell {
     let movieTitleView: UIView = UIView()
     
     let krMovieTitleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "영화 제목"
         label.textAlignment = .left
         return label
     }()
     
     let enMovieTitleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "movie title"
         label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
     let genreLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "영화 장르"
         label.textAlignment = .center
         return label
     }()
-
+    
     
     let releaseDateLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "개봉일"
         label.textAlignment = .right
         return label
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubViews()

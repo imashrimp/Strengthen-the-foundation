@@ -3,4 +3,54 @@
    uuid = "DF3BF1C0-D1BC-4D72-B2FB-A1013A76994D"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7C219AC-E890-4293-A6A8-0973D286BE73"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "movieApp/CustomView/MovieListSectionHeaderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "init?(coder:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E7C219AC-E890-4293-A6A8-0973D286BE73 - de6f6395068a1d48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieApp.MovieListSectionHeaderView.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;movieApp.MovieListSectionHeaderView&gt;"
+                  moduleName = "movieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kwonhyeon-seok/Desktop/Strengthen%20the%20foundation/archive/what%20i%20made/movieApp/movieApp/CustomView/MovieListSectionHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E7C219AC-E890-4293-A6A8-0973D286BE73 - 3a6648f60b4f0ad0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "movieApp.MovieListSectionHeaderView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;movieApp.MovieListSectionHeaderView&gt;"
+                  moduleName = "movieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kwonhyeon-seok/Desktop/Strengthen%20the%20foundation/archive/what%20i%20made/movieApp/movieApp/CustomView/MovieListSectionHeaderView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

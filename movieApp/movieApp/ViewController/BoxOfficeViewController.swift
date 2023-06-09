@@ -10,7 +10,7 @@ import SnapKit
 import Moya
 
 class BoxOfficeViewController: UIViewController {
-
+    
     var boxOfficeAPINetworking = APINetworking()
     var boxOfficeViewModel = BoxOfficeViewModel()
     
@@ -29,7 +29,7 @@ class BoxOfficeViewController: UIViewController {
         view.backgroundColor = .white
         
         boxOfficeViewModel.delegate = self
-
+        
         addSubViews()
         configure()
         makeConstraints()
@@ -102,11 +102,12 @@ extension BoxOfficeViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BoxOfficeTableViewCell", for: indexPath) as! BoxOfficeTableViewCell
         
-        DispatchQueue.main.async {
-            cell.movieRankLabel.text = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row].rank
-            cell.movieTitleLabel.text = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row].movieNm
-            cell.audienceNumberLabel.text = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row].audiAcc
-        }
+        let item = self.boxOfficeViewModel.boxOfficeRankData[indexPath.row]
+        
+        cell.movieRankLabel.text = item.rank
+        cell.movieTitleLabel.text = item.movieNm
+        cell.audienceNumberLabel.text = "\(item.audiAcc)명"
+        
         return cell
     }
 }

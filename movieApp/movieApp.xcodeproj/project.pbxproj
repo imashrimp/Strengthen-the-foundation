@@ -26,10 +26,11 @@
 		17B32FF52A1C83B0001CE476 /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FF42A1C83B0001CE476 /* BoxOfficeTableViewCell.swift */; };
 		17B32FF72A1C83D4001CE476 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FF62A1C83D4001CE476 /* MovieListTableViewCell.swift */; };
 		17B32FF92A1C83DD001CE476 /* ActorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FF82A1C83DD001CE476 /* ActorListTableViewCell.swift */; };
-		17B32FFD2A2860AB001CE476 /* SearchButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FFC2A2860AB001CE476 /* SearchButtonView.swift */; };
 		17B32FFF2A2D7838001CE476 /* BoxOfficeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B32FFE2A2D7838001CE476 /* BoxOfficeViewModel.swift */; };
 		17B330032A320265001CE476 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B330022A320265001CE476 /* MovieListViewModel.swift */; };
 		17B330052A320278001CE476 /* ActorListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B330042A320278001CE476 /* ActorListViewModel.swift */; };
+		17B330072A32D592001CE476 /* MovieListSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B330062A32D592001CE476 /* MovieListSectionHeaderView.swift */; };
+		17B330092A32D8DC001CE476 /* ActorListSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B330082A32D8DC001CE476 /* ActorListSectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +53,11 @@
 		17B32FF42A1C83B0001CE476 /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		17B32FF62A1C83D4001CE476 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		17B32FF82A1C83DD001CE476 /* ActorListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListTableViewCell.swift; sourceTree = "<group>"; };
-		17B32FFC2A2860AB001CE476 /* SearchButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonView.swift; sourceTree = "<group>"; };
 		17B32FFE2A2D7838001CE476 /* BoxOfficeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewModel.swift; sourceTree = "<group>"; };
 		17B330022A320265001CE476 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		17B330042A320278001CE476 /* ActorListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListViewModel.swift; sourceTree = "<group>"; };
+		17B330062A32D592001CE476 /* MovieListSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListSectionHeaderView.swift; sourceTree = "<group>"; };
+		17B330082A32D8DC001CE476 /* ActorListSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListSectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				171A64EE2A1B646E00AF239B /* BoxOfficeSectionHeaderView.swift */,
-				17B32FFC2A2860AB001CE476 /* SearchButtonView.swift */,
 				17B32FF42A1C83B0001CE476 /* BoxOfficeTableViewCell.swift */,
+				17B330062A32D592001CE476 /* MovieListSectionHeaderView.swift */,
 				17B32FF62A1C83D4001CE476 /* MovieListTableViewCell.swift */,
+				17B330082A32D8DC001CE476 /* ActorListSectionHeaderView.swift */,
 				17B32FF82A1C83DD001CE476 /* ActorListTableViewCell.swift */,
 			);
 			path = CustomView;
@@ -236,15 +239,16 @@
 				171A64E92A19E73500AF239B /* BoxOfficeResponse.swift in Sources */,
 				17B32FF12A1C7CCB001CE476 /* MovieListResponse.swift in Sources */,
 				171A64CD2A18E4A300AF239B /* AppDelegate.swift in Sources */,
-				17B32FFD2A2860AB001CE476 /* SearchButtonView.swift in Sources */,
 				17B32FF92A1C83DD001CE476 /* ActorListTableViewCell.swift in Sources */,
 				171A64F12A1BAF0800AF239B /* MovieListViewController.swift in Sources */,
 				17B32FF72A1C83D4001CE476 /* MovieListTableViewCell.swift in Sources */,
 				17B32FF32A1C7D29001CE476 /* ActorListResonse.swift in Sources */,
+				17B330092A32D8DC001CE476 /* ActorListSectionHeaderView.swift in Sources */,
 				171A64EF2A1B646E00AF239B /* BoxOfficeSectionHeaderView.swift in Sources */,
 				17B32FF52A1C83B0001CE476 /* BoxOfficeTableViewCell.swift in Sources */,
 				17B330052A320278001CE476 /* ActorListViewModel.swift in Sources */,
 				171A64CF2A18E4A300AF239B /* SceneDelegate.swift in Sources */,
+				17B330072A32D592001CE476 /* MovieListSectionHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

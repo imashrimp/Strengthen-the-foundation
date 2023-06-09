@@ -25,7 +25,7 @@ class BoxOfficeTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
-
+    
     let audienceNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "0명"

@@ -14,7 +14,6 @@ class MovieListViewController: UIViewController {
     let viewModel = MovieListViewModel()
     
     let searchBar: UISearchController = UISearchController(searchResultsController: nil)
-    let searchButtonView: UIView = SearchButtonView()
     let movieListTableView: UITableView = {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +30,7 @@ class MovieListViewController: UIViewController {
         configure()
         makeConstraints()
     }
-
+    
     private func addSubViews() {
         self.view.addSubview(movieListTableView)
     }
@@ -81,7 +80,10 @@ extension MovieListViewController: UISearchResultsUpdating {
 
 //MARK: - 테이블 뷰 델리게이트, 데이터 소스
 extension MovieListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = MovieListSectionHeaderView()
+        return header
+    }
 }
 
 extension MovieListViewController: UITableViewDataSource {

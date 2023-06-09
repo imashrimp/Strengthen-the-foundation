@@ -23,10 +23,4 @@ struct MovieListResult: Codable {
 struct MovieListElement: Codable {
     let movieNm, movieNmEn, openDt: String
     let repGenreNm: String
-    let directors: [Director]
-}
-
-// MARK: - Director
-struct Director: Codable {
-    let peopleNm: String
 }
